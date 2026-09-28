@@ -5,7 +5,32 @@ import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
 import { Radio, ArrowRight, Trophy } from 'lucide-react'
 import { GlitchText } from '@/components/glitch-text'
-import { Countdown } from '@/components/countdown'
+import { Countdown, getCountdown } from '@/components/countdown'
+
+/** Live phase label — shows whichever event is next. */
+function EventCountdown() {
+  const [label, setLabel] = useState(() => getCountdown(Date.now()).label)
+
+  useEffect(() => {
+    const id = setInterval(() => setLabel(getCountdown(Date.now()).label), 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <div className="mb-1.5 flex items-center justify-center gap-1.5 sm:mb-2">
+      <span className="relative flex size-1.5">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#e83e8c] opacity-75" />
+        <span className="relative inline-flex size-1.5 rounded-full bg-[#e83e8c]" />
+      </span>
+      <span
+        className="font-mono text-[9px] font-bold uppercase tracking-[0.22em] sm:text-[10px]"
+        style={{ color: '#9ca3af' }}
+      >
+        {label}
+      </span>
+    </div>
+  )
+}
 
 const swipeImages = [
   { src: '/hero-swipe-1.webp', alt: 'Cyber Invaders event — classroom wide shot' },
@@ -117,7 +142,7 @@ export function Hero() {
               <div className="mt-0.5 text-[10px] sm:text-xs" style={{ color: '#68738D' }}>Prize Pool</div>
             </div>
 
-            {/* Countdown to the grand finale */}
+            {/* Countdown — auto-switches from qualifier to grand finale */}
             <div
               className="rounded-xl px-3 sm:px-4 py-3 sm:py-4 glass sm:col-span-3"
               style={{
@@ -125,18 +150,7 @@ export function Hero() {
                 border: '1px solid rgba(94, 23, 235, 0.18)',
               }}
             >
-              <div className="mb-1.5 flex items-center justify-center gap-1.5 sm:mb-2">
-                <span className="relative flex size-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#e83e8c] opacity-75" />
-                  <span className="relative inline-flex size-1.5 rounded-full bg-[#e83e8c]" />
-                </span>
-                <span
-                  className="font-mono text-[9px] font-bold uppercase tracking-[0.22em] sm:text-[10px]"
-                  style={{ color: '#9ca3af' }}
-                >
-                  Grand Finale · 24 Oct
-                </span>
-              </div>
+              <EventCountdown />
               <Countdown />
             </div>
           </motion.div>

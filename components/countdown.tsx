@@ -3,13 +3,34 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 
-/** Offline grand finale — 24 October 2026, 09:00 IST, NIET Greater Noida. */
-export const FINALE_AT = new Date('2026-10-24T09:00:00+05:30').getTime()
+/** Event phases. Times are IST (+05:30). */
+export const PHASES = [
+  {
+    id: 'qualifier',
+    label: 'Qualifier · 17 Oct',
+    at: new Date('2026-10-17T10:00:00+05:30').getTime(),
+  },
+  {
+    id: 'finale',
+    label: 'Grand Finale · 24 Oct',
+    at: new Date('2026-10-24T09:00:00+05:30').getTime(),
+  },
+] as const
 
-function getRemaining(now: number) {
-  const diff = Math.max(0, FINALE_AT - now)
+export type PhaseId = (typeof PHASES)[number]['id']
+
+/** Current phase + time remaining until it starts. */
+export function getPhase(now: number) {
+  const next = PHASES.find((p) => p.at > now)
+  if (!next) return { phase: PHASES[PHASES.length - 1], diff: 0, live: true }
+  return { phase: next, diff: next.at - now, live: false }
+}
+
+export function getCountdown(now: number) {
+  const { phase, diff, live } = getPhase(now)
   return {
-    live: diff <= 0,
+    live,
+    label: live ? 'Finale is live' : phase.label,
     days: Math.floor(diff / 86_400_000),
     hours: Math.floor(diff / 3_600_000) % 24,
     minutes: Math.floor(diff / 60_000) % 60,
@@ -67,7 +88,7 @@ export function Countdown() {
     return () => clearInterval(id)
   }, [])
 
-  const t = getRemaining(now)
+  const t = getCountdown(now)
 
   if (t.live) {
     return (

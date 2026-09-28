@@ -22,14 +22,14 @@ import { SectionHeading } from '@/components/section-heading'
 import { Reveal } from '@/components/motion-primitives'
 
 const phase1Highlights = [
-  'Remote pan-India live participation',
+  '17 Oct · Remote pan-India live participation',
   'Jeopardy-style challenge format across 10 domains',
   'Live dynamic flag scoring & leaderboard',
   'Top qualifying squads advance to NIET finale',
 ]
 
 const phase2Highlights = [
-  'Hosted on-ground at NIET Greater Noida campus',
+  '24 Oct · Hosted on-ground at NIET Greater Noida campus',
   'Dual-format: Jeopardy Round + Live Attack & Defense',
   '8-hour continuous war-room showdown',
   '₹50,000 prize pool, trophies & national acclaim',
@@ -208,6 +208,9 @@ export function Structure() {
                 {/* Tech Pills Bar */}
                 <div className="mt-5 flex flex-wrap gap-2 text-xs font-mono">
                   <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(94,23,235,0.18)]">
+                    📅 17 October
+                  </span>
+                  <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(94,23,235,0.18)]">
                     ⚔️ 10 Domains
                   </span>
                   <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(94,23,235,0.18)]">
@@ -306,6 +309,9 @@ export function Structure() {
 
                 {/* Tech Pills Bar */}
                 <div className="mt-5 flex flex-wrap gap-2 text-xs font-mono">
+                  <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(232,62,140,0.2)]">
+                    📅 24 October
+                  </span>
                   <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(232,62,140,0.2)]">
                     🏛️ NIET Greater Noida
                   </span>
