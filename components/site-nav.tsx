@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import { siteLinks } from '@/lib/links'
+import { WhatsAppIcon } from '@/components/whatsapp-icon'
 
 const links = [
   { label: 'Overview',  href: '#overview' },
@@ -115,9 +116,13 @@ export function SiteNav() {
               href={siteLinks.whatsappChannel}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden rounded-md px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-[#4a10c4] sm:inline-flex"
-              style={{ background: '#5e17eb' }}
+              className="hidden items-center gap-1.5 rounded-md px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-[#1EBE5D] sm:inline-flex"
+              style={{
+                background: '#25D366',
+                boxShadow: '0 6px 20px -10px rgba(37, 211, 102, 0.7)',
+              }}
             >
+              <WhatsAppIcon className="size-3.5" />
               Join Channel
             </a>
 
@@ -186,9 +191,13 @@ export function SiteNav() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setMenuOpen(false)}
-                    className="block rounded-xl px-4 py-3 text-center text-sm font-semibold text-white shadow-lg"
-                    style={{ background: '#5e17eb' }}
+                    className="flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-center text-sm font-semibold text-white shadow-lg transition-colors"
+                    style={{
+                      background: '#25D366',
+                      boxShadow: '0 8px 24px -12px rgba(37, 211, 102, 0.7)',
+                    }}
                   >
+                    <WhatsAppIcon className="size-4" />
                     Join Announcement Channel
                   </a>
                 </div>

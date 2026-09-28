@@ -245,6 +245,20 @@
   box-shadow: 0 0 28px -8px rgba(94, 23, 235, 0.45), inset 0 0 18px -8px rgba(94, 23, 235, 0.15);
 }
 
+/* ── System Button (WhatsApp green variant) ── */
+.sys-btn-whatsapp {
+  border-color: rgba(37, 211, 102, 0.4);
+  background: rgba(37, 211, 102, 0.1);
+}
+.sys-btn-whatsapp::before {
+  background: linear-gradient(90deg, transparent, rgba(37, 211, 102, 0.22), transparent);
+}
+.sys-btn-whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.8);
+  background: rgba(37, 211, 102, 0.18);
+  box-shadow: 0 0 28px -8px rgba(37, 211, 102, 0.5), inset 0 0 18px -8px rgba(37, 211, 102, 0.2);
+}
+
 /* ── Status Indicator Dot ── */
 .status-dot {
   display: inline-block;

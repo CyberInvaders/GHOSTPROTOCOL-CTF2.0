@@ -5,7 +5,6 @@ import { motion } from 'motion/react'
 import {
   Mail,
   Send,
-  MessageCircle,
   MapPin,
   ExternalLink,
   Copy,
@@ -20,6 +19,7 @@ import {
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal } from '@/components/motion-primitives'
 import { siteLinks } from '@/lib/links'
+import { WhatsAppIcon } from '@/components/whatsapp-icon'
 
 export function Contact() {
   const [copied, setCopied] = useState(false)
@@ -168,10 +168,10 @@ export function Contact() {
                     href={siteLinks.whatsappChannel}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg py-2 text-xs font-semibold text-white transition-colors hover:bg-green-600"
-                    style={{ background: '#16a34a' }}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-lg py-2 text-xs font-semibold text-white transition-colors hover:bg-[#1EBE5D]"
+                    style={{ background: '#25D366' }}
                   >
-                    <MessageCircle className="size-3.5" />
+                    <WhatsAppIcon className="size-3.5" />
                     <span>Join Official Broadcast Channel</span>
                   </a>
                 </div>

@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, Radio } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { siteLinks } from '@/lib/links'
+import { WhatsAppIcon } from '@/components/whatsapp-icon'
 
 /**
  * Cinematic finale section — the last thing visitors see before footer.
@@ -178,11 +179,11 @@ export function FinalCta() {
             href={siteLinks.whatsappChannel}
             target="_blank"
             rel="noopener noreferrer"
-            className="sys-btn sys-btn-purple group"
+            className="sys-btn sys-btn-whatsapp group"
           >
             <span className="relative z-10 flex items-center gap-2.5">
               {'['}
-              <Radio className="size-3.5" style={{ color: '#a78bfa' }} />
+              <WhatsAppIcon className="size-3.5" style={{ color: '#25D366' }} />
               JOIN COMMAND CHANNEL
               {']'}
             </span>

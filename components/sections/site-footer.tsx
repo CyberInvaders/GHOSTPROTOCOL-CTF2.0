@@ -1,12 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-import { AtSign, Send, Mail, ExternalLink } from 'lucide-react'
+import { AtSign, Mail, ExternalLink } from 'lucide-react'
 import { siteLinks } from '@/lib/links'
+import { WhatsAppIcon } from '@/components/whatsapp-icon'
 
 const socials = [
   { icon: AtSign, label: 'Instagram', href: siteLinks.instagram },
-  { icon: Send, label: 'WhatsApp Channel', href: siteLinks.whatsappChannel },
+  { icon: WhatsAppIcon, label: 'WhatsApp Channel', href: siteLinks.whatsappChannel },
   { image: '/cyber-invaders-crest.webp', label: 'Club Portal', href: siteLinks.clubWebsite },
   { image: '/niet-crest.webp', label: 'NIET Website', href: siteLinks.nietWebsite },
 ]

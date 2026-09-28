@@ -1,9 +1,10 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { Radio, Bell } from 'lucide-react'
+import { Bell } from 'lucide-react'
 import { Reveal } from '@/components/motion-primitives'
 import { siteLinks } from '@/lib/links'
+import { WhatsAppIcon } from '@/components/whatsapp-icon'
 
 export function Announcement() {
   return (
@@ -56,10 +57,13 @@ export function Announcement() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="relative mt-8 inline-flex items-center gap-2.5 rounded-md px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-[#4a10c4]"
-              style={{ background: '#5e17eb' }}
+              className="relative mt-8 inline-flex items-center gap-2.5 rounded-md px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-[#1EBE5D]"
+              style={{
+                background: '#25D366',
+                boxShadow: '0 10px 30px -12px rgba(37, 211, 102, 0.75)',
+              }}
             >
-              <Radio className="size-5" />
+              <WhatsAppIcon className="size-5" />
               Join Announcement Channel
             </motion.a>
           </Reveal>

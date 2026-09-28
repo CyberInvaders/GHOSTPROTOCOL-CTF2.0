@@ -3,9 +3,10 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
-import { MessageCircle, ArrowRight, Trophy } from 'lucide-react'
+import { ArrowRight, Trophy } from 'lucide-react'
 import { GlitchText } from '@/components/glitch-text'
 import { siteLinks } from '@/lib/links'
+import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { Countdown, getCountdown } from '@/components/countdown'
 
 /** Live phase label — shows whichever event is next. */
@@ -178,14 +179,15 @@ export function Hero() {
               href={siteLinks.whatsappChannel}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3 sm:py-3.5 text-sm font-semibold transition-all hover:bg-[#111A2E] active:scale-[0.98] sm:w-auto"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3 sm:py-3.5 text-sm font-semibold transition-all active:scale-[0.98] sm:w-auto"
               style={{
-                border: '1px solid rgba(94, 23, 235, 0.22)',
-                background: '#0D1425',
+                border: '1px solid rgba(37, 211, 102, 0.35)',
+                background: 'rgba(37, 211, 102, 0.08)',
                 color: '#F8FAFC',
+                boxShadow: '0 8px 24px -14px rgba(37, 211, 102, 0.6)',
               }}
             >
-              <MessageCircle className="size-4" style={{ color: '#a78bfa' }} />
+              <WhatsAppIcon className="size-4" style={{ color: '#25D366' }} />
               Join Announcement Channel
             </a>
           </motion.div>
