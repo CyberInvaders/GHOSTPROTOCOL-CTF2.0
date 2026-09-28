@@ -11,27 +11,27 @@ export const siteLinks = {
   // Official Social & Community Channels
   instagram: 'https://www.instagram.com/cyberinvaders_niet',
   linkedin: 'https://www.linkedin.com/school/niet-greater-noida',
-  whatsappChannel: '#announcement', // Official WhatsApp Broadcast Channel
+  whatsappChannel: '/#announcement', // Official WhatsApp Broadcast Channel
   email: 'cyberinvaders@niet.co.in',
   mailto: 'mailto:cyberinvaders@niet.co.in?subject=Ghost%20Protocol%20CTF%202.0%20Inquiry',
   
-  // Registration & CTF Portal
-  register: '#register',
-  announcement: '#announcement',
+  // Registration & CTF Portal (live on the homepage index)
+  register: '/#register',
+  announcement: '/#announcement',
   
   // Location & Maps
   googleMaps: 'https://maps.google.com/?q=Noida+Institute+of+Engineering+and+Technology+Greater+Noida',
   googleMapsDirections: 'https://www.google.com/maps/dir/?api=1&destination=Noida+Institute+of+Engineering+and+Technology,+Greater+Noida',
   
-  // Navigation anchors
+  // Page routes (multi-page site — nav points to routes, not anchors)
   nav: {
-    overview: '#overview',
-    timeline: '#timeline',
-    categories: '#categories',
-    about: '#club',
-    sponsors: '#sponsors',
-    team: '#team',
-    faq: '#faq',
-    contact: '#contact',
+    overview: '/overview',
+    timeline: '/timeline',
+    categories: '/categories',
+    about: '/about',
+    sponsors: '/sponsors',
+    team: '/team',
+    faq: '/faq',
+    contact: '/contact',
   },
 }

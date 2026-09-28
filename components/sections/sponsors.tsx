@@ -172,7 +172,7 @@ export function Sponsors() {
               Partner with us to reach 600+ talented cybersecurity students across the nation.
             </p>
             <a
-              href="#contact"
+              href="/contact"
               className="mt-5 inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#4a10c4]"
               style={{ background: '#5e17eb' }}
             >

@@ -4,6 +4,9 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { GlobalBackground } from '@/components/global-background'
+import { SiteNav } from '@/components/site-nav'
+import { SiteFooter } from '@/components/sections/site-footer'
+import { CtfParticleOutro } from '@/components/sections/ctf-particle-outro'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -69,7 +72,10 @@ export default function RootLayout({
     >
       <body className="bg-background antialiased">
         <GlobalBackground />
+        <SiteNav />
         {children}
+        <SiteFooter />
+        <CtfParticleOutro />
         <SpeedInsights />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

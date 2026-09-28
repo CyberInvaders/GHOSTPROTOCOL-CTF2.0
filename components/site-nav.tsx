@@ -6,14 +6,14 @@ import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 
 const links = [
-  { label: 'Overview',  href: '#overview' },
-  { label: 'Timeline',  href: '#timeline' },
-  { label: 'Category',  href: '#categories' },
-  { label: 'About',     href: '#club' },
-  { label: 'Sponsors',  href: '#sponsors' },
-  { label: 'Team',      href: '#team' },
-  { label: "FAQ's",     href: '#faq' },
-  { label: 'Contact',   href: '#contact' },
+  { label: 'Overview',  href: '/overview' },
+  { label: 'Timeline',  href: '/timeline' },
+  { label: 'Category',  href: '/categories' },
+  { label: 'About',     href: '/about' },
+  { label: 'Sponsors',  href: '/sponsors' },
+  { label: 'Team',      href: '/team' },
+  { label: "FAQ's",     href: '/faq' },
+  { label: 'Contact',   href: '/contact' },
 ]
 
 export function SiteNav() {
@@ -73,7 +73,7 @@ export function SiteNav() {
           }
         >
           {/* Logo: NIET Full Logo x Cyber Invaders Full Logo */}
-          <a href="#top" className="group flex shrink-0 items-center">
+          <a href="/" className="group flex shrink-0 items-center">
             <div className="flex items-center gap-1.5 sm:gap-2.5 py-0.5">
               <Image
                 src="/niet-full-logo.webp"
@@ -111,7 +111,7 @@ export function SiteNav() {
           {/* Right side actions */}
           <div className="flex items-center gap-2">
             <a
-              href="#announcement"
+              href="/#announcement"
               className="hidden rounded-md px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-[#4a10c4] sm:inline-flex"
               style={{ background: '#5e17eb' }}
             >
@@ -179,7 +179,7 @@ export function SiteNav() {
                 ))}
                 <div className="mt-2 border-t pt-3" style={{ borderColor: 'rgba(94,23,235,0.18)' }}>
                   <a
-                    href="#announcement"
+                    href="/#announcement"
                     onClick={() => setMenuOpen(false)}
                     className="block rounded-xl px-4 py-3 text-center text-sm font-semibold text-white shadow-lg"
                     style={{ background: '#5e17eb' }}

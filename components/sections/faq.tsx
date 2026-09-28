@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: 'Is there a registration fee?',
-    a: 'The online qualification round is free to participate. Selected teams invited for the offline grand finale may have a nominal participation fee covering on-campus logistics. Details will be shared in the announcement channel.',
+    a: 'Yes. The registration fee is ₹149 per team (not per member), which covers the online qualification round. Teams selected for the offline grand finale do not pay any additional participation fee.',
   },
   {
     q: 'What is the team size limit?',
@@ -24,16 +24,20 @@ const faqs = [
     a: 'The online qualification is a Jeopardy-style CTF with challenges across Web Exploitation, Cryptography, Forensics, OSINT, Reverse Engineering, Pwn, Steganography, Cloud Security, AI/LLM Security, and Miscellaneous categories. The grand finale adds an 8-hour Attack & Defense round.',
   },
   {
+    q: 'What are the event dates?',
+    a: 'The online qualification round is scheduled for 24 October. Finale dates and reporting schedule for qualified teams will be announced in the announcement channel after the qualification round.',
+  },
+  {
     q: 'How many teams get selected for the grand finale?',
-    a: 'Top-performing teams from the online qualification will be invited to the offline grand finale at NIET Greater Noida. The exact number of qualifying teams will be announced after the qualification round.',
+    a: 'The top 35 teams from the online qualification will be invited to the offline grand finale at NIET Greater Noida. The final shortlist and finale briefing will be shared in the announcement channel.',
   },
   {
     q: 'Will accommodation be provided for outstation teams?',
-    a: 'Yes, accommodation arrangements will be made available for outstation teams selected for the finale. Detailed logistics, travel, and accommodation information will be communicated through the WhatsApp announcement channel.',
+    a: 'No. Travel and accommodation are not provided — outstation teams qualifying for the finale must arrange their own stay in Greater Noida. The finale venue is NIET Greater Noida; see the Contact page for the campus map.',
   },
   {
     q: 'What is the prize pool?',
-    a: 'The total prize pool is ₹24,000+ distributed across top-performing teams. Certificates, trophies, and goodies will also be awarded to winners and finalists.',
+    a: 'The total prize pool is ₹50,000 — 1st place wins ₹25,000, 2nd place ₹15,000 and 3rd place ₹10,000. Trophies, certificates and goodies will also be awarded to winners and finalists.',
   },
   {
     q: 'How do I stay updated about announcements?',
@@ -143,7 +147,7 @@ export function Faq() {
             <p className="text-sm" style={{ color: '#68738D' }}>
               Still have questions?{' '}
               <a
-                href="#contact"
+                href="/contact"
                 className="font-medium underline underline-offset-4 transition-colors hover:text-foreground"
                 style={{ color: '#a78bfa' }}
               >
