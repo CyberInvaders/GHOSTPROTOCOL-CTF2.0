@@ -163,7 +163,7 @@ export function Hero() {
             className="mt-7 sm:mt-9 flex flex-col items-center gap-3 sm:flex-row lg:justify-start"
           >
             <a
-              href="/#register"
+              href="#register"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3 sm:py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#4a10c4] active:scale-[0.98] sm:w-auto"
               style={{
                 background: '#5e17eb',
@@ -174,7 +174,7 @@ export function Hero() {
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
-              href="/#announcement"
+              href="#announcement"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3 sm:py-3.5 text-sm font-semibold transition-all hover:bg-[#111A2E] active:scale-[0.98] sm:w-auto"
               style={{
                 border: '1px solid rgba(94, 23, 235, 0.22)',

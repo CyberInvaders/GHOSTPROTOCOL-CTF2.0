@@ -147,7 +147,7 @@ export function Faq() {
             <p className="text-sm" style={{ color: '#68738D' }}>
               Still have questions?{' '}
               <a
-                href="/contact"
+                href="#contact"
                 className="font-medium underline underline-offset-4 transition-colors hover:text-foreground"
                 style={{ color: '#a78bfa' }}
               >

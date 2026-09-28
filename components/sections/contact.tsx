@@ -164,7 +164,7 @@ export function Contact() {
 
                 <div className="mt-3 flex items-center gap-2">
                   <a
-                    href="/#announcement"
+                    href="#announcement"
                     className="inline-flex w-full items-center justify-center gap-2 rounded-lg py-2 text-xs font-semibold text-white transition-colors hover:bg-green-600"
                     style={{ background: '#16a34a' }}
                   >
