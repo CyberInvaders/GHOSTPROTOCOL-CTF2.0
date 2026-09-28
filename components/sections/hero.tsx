@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
 import { Radio, ArrowRight, Users, UsersRound, Trophy } from 'lucide-react'
-import { FlameEffect } from '@/components/flame-effect'
 import { GlitchText } from '@/components/glitch-text'
 
 const stats = [
@@ -65,8 +64,6 @@ export function Hero() {
           >
             <GlitchText />
             <span className="relative mt-2 inline-block">
-              {/* Animated realistic burning flame rising from underneath */}
-              <FlameEffect />
               <span className="text-gradient relative z-10 block tracking-wide">
                 CTF 2.0
               </span>
