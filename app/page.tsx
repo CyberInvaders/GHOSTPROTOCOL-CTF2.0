@@ -1,3 +1,5 @@
+import { Hero } from '@/components/sections/hero'
+import { Metrics } from '@/components/sections/metrics'
 import { Announcement } from '@/components/sections/announcement'
 import { FinalCta } from '@/components/sections/final-cta'
 import { SectionHeading } from '@/components/section-heading'
@@ -100,7 +102,9 @@ function ExploreIndex() {
 
 export default function Page() {
   return (
-    <main className="relative overflow-x-hidden pt-20 md:pt-24">
+    <main className="relative overflow-x-hidden">
+      <Hero />
+      <Metrics />
       <ExploreIndex />
       <Announcement />
       <FinalCta />

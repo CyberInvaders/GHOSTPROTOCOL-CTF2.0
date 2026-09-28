@@ -10,8 +10,8 @@ import { siteLinks } from '@/lib/links'
 const stats = [
   { value: 10, suffix: '+', label: 'Hands-on workshops' },
   { value: 12, suffix: '', label: 'events run' },
-  { value: 300, suffix: '+', label: 'Members trained' },
-  { value: 3, suffix: 'yrs', label: 'Building the community' },
+  { value: 200, suffix: '+', label: 'Members trained' },
+  { value: 4, suffix: 'yrs', label: 'Building the community' },
 ]
 
 export function Club() {

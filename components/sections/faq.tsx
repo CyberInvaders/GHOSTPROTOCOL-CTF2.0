@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: 'What are the event dates?',
-    a: 'The online qualification round is scheduled for 24 October. Finale dates and reporting schedule for qualified teams will be announced in the announcement channel after the qualification round.',
+    a: 'The offline grand finale is scheduled for 24 October at NIET Greater Noida. The online qualification round will take place before that — the exact date is yet to be announced and will be shared in the announcement channel.',
   },
   {
     q: 'How many teams get selected for the grand finale?',
