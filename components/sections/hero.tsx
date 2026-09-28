@@ -3,14 +3,9 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
-import { Radio, ArrowRight, Users, UsersRound, Trophy } from 'lucide-react'
+import { Radio, ArrowRight, Trophy } from 'lucide-react'
 import { GlitchText } from '@/components/glitch-text'
-
-const stats = [
-  { icon: Users, value: '500+', label: 'Expected Teams' },
-  { icon: UsersRound, value: '1,500+', label: 'Expected Students' },
-  { icon: Trophy, value: '₹50,000', label: 'Prize Pool' },
-]
+import { Countdown } from '@/components/countdown'
 
 const swipeImages = [
   { src: '/hero-swipe-1.webp', alt: 'Cyber Invaders event — classroom wide shot' },
@@ -96,31 +91,54 @@ export function Hero() {
           </motion.div>
 
           {/* Stats */}
+          {/* Prize pool + finale countdown */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="mx-auto mt-6 sm:mt-8 grid max-w-lg grid-cols-3 gap-2 sm:gap-3 lg:mx-0"
+            className="mx-auto mt-6 sm:mt-8 grid max-w-lg grid-cols-1 gap-2 sm:grid-cols-5 sm:gap-3 lg:mx-0"
           >
-            {stats.map((s) => (
+            {/* Prize pool — first card */}
+            <div
+              className="rounded-xl px-2 sm:px-3 py-3 sm:py-4 text-center glass transition-transform duration-200 hover:-translate-y-0.5 sm:col-span-2"
+              style={{
+                background: 'linear-gradient(160deg, rgba(94,23,235,0.22) 0%, #0D1425 70%)',
+                border: '1px solid rgba(94, 23, 235, 0.35)',
+                boxShadow: '0 0 24px -8px rgba(94, 23, 235, 0.5)',
+              }}
+            >
+              <Trophy className="mx-auto mb-1.5 sm:mb-2 size-3.5 sm:size-4" style={{ color: '#a78bfa' }} />
               <div
-                key={s.label}
-                className="rounded-xl px-2 sm:px-3 py-3 sm:py-4 text-center glass transition-transform duration-200 hover:-translate-y-0.5"
-                style={{
-                  background: '#0D1425',
-                  border: '1px solid rgba(94, 23, 235, 0.18)',
-                }}
+                className="font-display text-lg sm:text-2xl font-bold"
+                style={{ color: '#F8FAFC' }}
               >
-                <s.icon className="mx-auto mb-1.5 sm:mb-2 size-3.5 sm:size-4" style={{ color: '#a78bfa' }} />
-                <div
-                  className="font-display text-lg sm:text-2xl font-bold"
-                  style={{ color: '#F8FAFC' }}
-                >
-                  {s.value}
-                </div>
-                <div className="mt-0.5 text-[10px] sm:text-xs" style={{ color: '#68738D' }}>{s.label}</div>
+                ₹50,000
               </div>
-            ))}
+              <div className="mt-0.5 text-[10px] sm:text-xs" style={{ color: '#68738D' }}>Prize Pool</div>
+            </div>
+
+            {/* Countdown to the grand finale */}
+            <div
+              className="rounded-xl px-3 sm:px-4 py-3 sm:py-4 glass sm:col-span-3"
+              style={{
+                background: '#0D1425',
+                border: '1px solid rgba(94, 23, 235, 0.18)',
+              }}
+            >
+              <div className="mb-1.5 flex items-center justify-center gap-1.5 sm:mb-2">
+                <span className="relative flex size-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#e83e8c] opacity-75" />
+                  <span className="relative inline-flex size-1.5 rounded-full bg-[#e83e8c]" />
+                </span>
+                <span
+                  className="font-mono text-[9px] font-bold uppercase tracking-[0.22em] sm:text-[10px]"
+                  style={{ color: '#9ca3af' }}
+                >
+                  Grand Finale · 24 Oct
+                </span>
+              </div>
+              <Countdown />
+            </div>
           </motion.div>
 
           {/* CTAs */}
