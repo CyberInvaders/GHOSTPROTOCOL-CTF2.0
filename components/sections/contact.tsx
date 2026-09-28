@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal } from '@/components/motion-primitives'
+import { siteLinks } from '@/lib/links'
 
 export function Contact() {
   const [copied, setCopied] = useState(false)
@@ -164,7 +165,9 @@ export function Contact() {
 
                 <div className="mt-3 flex items-center gap-2">
                   <a
-                    href="#announcement"
+                    href={siteLinks.whatsappChannel}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex w-full items-center justify-center gap-2 rounded-lg py-2 text-xs font-semibold text-white transition-colors hover:bg-green-600"
                     style={{ background: '#16a34a' }}
                   >

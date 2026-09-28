@@ -175,7 +175,9 @@ export function FinalCta() {
           </a>
 
           <a
-            href="#announcement"
+            href={siteLinks.whatsappChannel}
+            target="_blank"
+            rel="noopener noreferrer"
             className="sys-btn sys-btn-purple group"
           >
             <span className="relative z-10 flex items-center gap-2.5">

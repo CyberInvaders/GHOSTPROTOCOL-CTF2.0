@@ -51,7 +51,7 @@ export function Announcement() {
           </Reveal>
           <Reveal delay={0.15}>
             <motion.a
-              href={siteLinks.instagram}
+              href={siteLinks.whatsappChannel}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}

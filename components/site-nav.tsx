@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
+import { siteLinks } from '@/lib/links'
 
 const links = [
   { label: 'Overview',  href: '#overview' },
@@ -111,7 +112,9 @@ export function SiteNav() {
           {/* Right side actions */}
           <div className="flex items-center gap-2">
             <a
-              href="#announcement"
+              href={siteLinks.whatsappChannel}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden rounded-md px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-[#4a10c4] sm:inline-flex"
               style={{ background: '#5e17eb' }}
             >
@@ -179,7 +182,9 @@ export function SiteNav() {
                 ))}
                 <div className="mt-2 border-t pt-3" style={{ borderColor: 'rgba(94,23,235,0.18)' }}>
                   <a
-                    href="#announcement"
+                    href={siteLinks.whatsappChannel}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setMenuOpen(false)}
                     className="block rounded-xl px-4 py-3 text-center text-sm font-semibold text-white shadow-lg"
                     style={{ background: '#5e17eb' }}
