@@ -5,16 +5,11 @@ import Image from 'next/image'
 import { motion } from 'motion/react'
 import {
   GraduationCap,
-  Users,
   Shield,
   Mail,
   ExternalLink,
   Sparkles,
   Terminal,
-  Code2,
-  Cpu,
-  Layers,
-  Award,
   Quote,
   Building2,
 } from 'lucide-react'
@@ -157,38 +152,6 @@ const coreLeads = [
     tag: 'VICE PRESIDENT',
     color: '#22c55e',
     image: '/aditya-kumar-singh.webp',
-  },
-]
-
-/* ─── Specialized Operational Squads ───────────────────────────────────────── */
-const studentSquads = [
-  {
-    squad: 'Challenge Development Squad',
-    roleDesc: 'Crafting, testing and auditing Jeopardy flags & Attack-Defense challenges.',
-    icon: Code2,
-    members: ['Lead Architect', 'Web Exploit Specialist', 'Reverse Engineer', 'Crypto Analyst'],
-    color: '#5e17eb',
-  },
-  {
-    squad: 'Server Infrastructure & Platform',
-    roleDesc: 'High-availability CTFd hosting, scoreboard telemetry & arena local network.',
-    icon: Cpu,
-    members: ['Infra Lead', 'Cloud Architect', 'Network Admin', 'Security Monitor'],
-    color: '#7c3aed',
-  },
-  {
-    squad: 'Creative, Media & Visuals',
-    roleDesc: 'Tournament identity, stream overlays, social broadcasts & stage presentation.',
-    icon: Layers,
-    members: ['Creative Director', 'Motion Designer', 'Content Lead', 'Broadcast Tech'],
-    color: '#e83e8c',
-  },
-  {
-    squad: 'Logistics, Hospitality & Outreach',
-    roleDesc: 'Team registrations, campus hospitality, help desk & finalist hospitality.',
-    icon: Award,
-    members: ['Logistics Head', 'Registration Lead', 'Hospitality Coordinator', 'Help Desk Lead'],
-    color: '#38bdf8',
   },
 ]
 
@@ -595,98 +558,6 @@ export function Team() {
           </StaggerGroup>
         </div>
 
-        {/* ════════════════════════ 4. OPERATIONAL SQUADS (BORDERLESS) ════════════════════════ */}
-        <div className="mt-20">
-          <Reveal>
-            <div className="mb-8 flex items-center justify-between gap-3 pb-4">
-              <div className="flex items-center gap-3">
-                <span
-                  className="grid size-10 place-items-center rounded-xl"
-                  style={{
-                    background: 'rgba(56, 189, 248, 0.15)',
-                  }}
-                >
-                  <Users className="size-5 text-sky-400" />
-                </span>
-                <div>
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
-                    Specialized Operational Squads
-                  </h3>
-                  <p className="text-xs text-[#9ca3af]">Technical and logistical execution divisions</p>
-                </div>
-              </div>
-              <span className="hidden sm:inline-block font-mono text-xs text-[#68738D]">
-                Student Volunteer Wings
-              </span>
-            </div>
-          </Reveal>
-
-          <div className="grid gap-5 sm:grid-cols-2">
-            {studentSquads.map((squad, idx) => {
-              const Icon = squad.icon
-              return (
-                <Reveal key={squad.squad} y={16} delay={idx * 0.06} className="h-full">
-                  <div
-                    className="relative h-full flex flex-col justify-between overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 drop-shadow-[0_0_24px_rgba(94,23,235,0.2)]"
-                    style={{
-                      background: '#0D1425',
-                    }}
-                  >
-                    <div
-                      className="absolute inset-x-0 top-0 h-1"
-                      style={{ background: squad.color }}
-                    />
-
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <span
-                          className="grid size-9 place-items-center rounded-lg"
-                          style={{
-                            background: `${squad.color}18`,
-                          }}
-                        >
-                          <Icon className="size-4.5" style={{ color: squad.color }} />
-                        </span>
-                        <div>
-                          <h4 className="font-display text-base font-bold text-white leading-snug">
-                            {squad.squad}
-                          </h4>
-                          <span className="font-mono text-[10px] text-[#a78bfa]">
-                            Division {idx + 1}
-                          </span>
-                        </div>
-                      </div>
-
-                      <p className="mt-3 text-xs leading-relaxed text-[#9ca3af]">
-                        {squad.roleDesc}
-                      </p>
-
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {squad.members.map((m, j) => (
-                          <div
-                            key={j}
-                            className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5"
-                            style={{
-                              background: '#111A2E',
-                            }}
-                          >
-                            <span
-                              className="size-1.5 rounded-full"
-                              style={{ background: squad.color }}
-                            />
-                            <span className="font-mono text-xs text-[#CBD5E1]">
-                              {m}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              )
-            })}
-          </div>
-        </div>
       </div>
     </section>
   )
