@@ -1,7 +1,10 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Globe,
   Building2,
   Compass,
@@ -108,7 +111,75 @@ const pipelineSteps = [
   },
 ]
 
+/* ── Serpentine (S-shaped) path layout, desktop only ──────────────────────
+   The seven stages snake through a 3-column grid:
+     01 → 02 → 03
+                ↓
+     06 ← 05 ← 04
+     ↓
+     07
+   Columns: card · 3.5rem link · card · 3.5rem link · card
+   Rows:    cards at 1/3/5, the two turns live in the 3rem rows 2 and 4. */
+const snakeCells = [
+  { col: 1, row: 1 },
+  { col: 3, row: 1 },
+  { col: 5, row: 1 },
+  { col: 5, row: 3 },
+  { col: 3, row: 3 },
+  { col: 1, row: 3 },
+  { col: 1, row: 5 },
+]
+
+const flowLinks = [
+  { kind: 'h', col: 2, row: 1, from: 0, to: 1, dir: 'l2r' },
+  { kind: 'h', col: 4, row: 1, from: 1, to: 2, dir: 'l2r' },
+  { kind: 'h', col: 4, row: 3, from: 3, to: 4, dir: 'r2l' },
+  { kind: 'h', col: 2, row: 3, from: 4, to: 5, dir: 'r2l' },
+  { kind: 'v', col: 5, row: 2, from: 2, to: 3 },
+  { kind: 'v', col: 1, row: 4, from: 5, to: 6 },
+] as const
+
+function FlowArrowH({ from, to, dir }: { from: string; to: string; dir: 'l2r' | 'r2l' }) {
+  return (
+    <>
+      <div
+        className="h-0.5 flex-1 rounded-full"
+        style={{
+          background:
+            dir === 'l2r'
+              ? `linear-gradient(90deg, ${from}, ${to})`
+              : `linear-gradient(90deg, ${to}, ${from})`,
+          marginRight: dir === 'l2r' ? '0.9rem' : 0,
+          marginLeft: dir === 'r2l' ? '0.9rem' : 0,
+        }}
+      />
+      {dir === 'l2r' ? (
+        <ChevronRight className="absolute right-0 top-1/2 size-4 -translate-y-1/2" style={{ color: to }} />
+      ) : (
+        <ChevronLeft className="absolute left-0 top-1/2 size-4 -translate-y-1/2" style={{ color: to }} />
+      )}
+    </>
+  )
+}
+
+function FlowArrowV({ from, to }: { from: string; to: string }) {
+  return (
+    <>
+      <div
+        className="w-0.5 flex-1 rounded-full"
+        style={{
+          background: `linear-gradient(180deg, ${from}, ${to})`,
+          marginBottom: '0.9rem',
+        }}
+      />
+      <ChevronDown className="absolute bottom-0 left-1/2 size-4 -translate-x-1/2" style={{ color: to }} />
+    </>
+  )
+}
+
 export function Structure() {
+  const reduceMotion = useReducedMotion()
+
   return (
     <section
       id="timeline"
@@ -374,74 +445,176 @@ export function Structure() {
           </div>
         </div>
 
-        {/* ── 7-Stage Tactical HUD Pipeline ── */}
-        <div className="grid gap-3.5 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 items-stretch">
-          {pipelineSteps.map((step, idx) => {
-            const Icon = step.icon
-            return (
-              <Reveal key={step.num} y={18} delay={idx * 0.05} className="h-full">
-                <div
-                  className="relative h-full flex flex-col justify-between overflow-hidden rounded-xl p-4 transition-all duration-300 hover:-translate-y-1.5 group"
-                  style={{
-                    background: '#0D1425',
-                    border: `1px solid ${step.accent}33`,
-                    boxShadow: `0 4px 20px -8px ${step.glow}`,
-                  }}
-                >
-                  {/* Top Glowing Indicator Line */}
-                  <div
-                    className="absolute inset-x-0 top-0 h-1"
-                    style={{ background: step.accent }}
-                  />
+        {/* ── Tactical Execution Pipeline — a connected path from 01 → 07 ── */}
+        <div className="relative mt-2">
+          {/* The path rail: one continuous line that every node sits on.
+              Its gradient mirrors the journey — Phase 1 purples into the
+              sky-blue handoff, warms through the orange war-room and ends
+              on the pink podium. */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-y-0 left-[21px] w-0.5 lg:hidden"
+            style={{
+              background:
+                'linear-gradient(180deg, rgba(94,23,235,0.7) 0%, rgba(124,58,237,0.6) 26%, rgba(56,189,248,0.6) 52%, rgba(249,115,22,0.65) 76%, rgba(232,62,140,0.75) 100%)',
+            }}
+          >
+            {!reduceMotion && (
+              <motion.div
+                className="absolute left-1/2 h-24 w-[3px] -translate-x-1/2 rounded-full"
+                style={{
+                  background:
+                    'linear-gradient(180deg, transparent 0%, rgba(248,250,252,0.9) 50%, transparent 100%)',
+                  boxShadow: '0 0 14px rgba(167, 139, 250, 0.9)',
+                }}
+                animate={{ top: ['-8%', '104%'] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
+              />
+            )}
+          </div>
 
-                  <div>
-                    {/* Header: Number & Code */}
-                    <div className="flex items-center justify-between">
+          <div className="space-y-6 sm:space-y-8 lg:grid lg:grid-cols-[1fr_3.5rem_1fr_3.5rem_1fr] lg:grid-rows-[auto_3rem_auto_3rem_auto] lg:space-y-0">
+            {pipelineSteps.map((step, idx) => {
+              const Icon = step.icon
+              const badgeRight = idx >= 3 && idx <= 5
+              return (
+                <div
+                  key={step.num}
+                  className="relative"
+                  style={{ gridColumn: snakeCells[idx].col, gridRow: snakeCells[idx].row }}
+                >
+                  {/* Phase handoff marker: the one point where the path leaves
+                      the remote qualifier and steps onto NIET ground. */}
+                  {idx === 4 && (
+                    <div className="relative z-10 mb-6 ml-11 w-fit sm:mb-8 lg:hidden">
                       <span
-                        className="grid size-8 place-items-center rounded-lg transition-transform duration-300 group-hover:scale-110"
+                        className="rounded-full px-3.5 py-1.5 font-mono text-[9px] font-semibold uppercase tracking-[0.22em] backdrop-blur-md"
                         style={{
-                          background: `${step.accent}18`,
-                          border: `1px solid ${step.accent}44`,
+                          background: 'rgba(13, 20, 37, 0.95)',
+                          border: '1px solid rgba(56, 189, 248, 0.45)',
+                          color: '#38bdf8',
+                          boxShadow: '0 0 18px rgba(56, 189, 248, 0.25)',
                         }}
                       >
-                        <Icon className="size-4" style={{ color: step.accent }} />
-                      </span>
-                      <span
-                        className="font-mono text-[10px] font-bold tracking-wider"
-                        style={{ color: step.accent }}
-                      >
-                        {step.num}
+                        Phase 01 → Phase 02 · Finalists only
                       </span>
                     </div>
+                  )}
 
-                    <div className="mt-3">
-                      <span
-                        className="font-mono text-[9px] font-semibold uppercase tracking-wider block"
-                        style={{ color: '#68738D' }}
+                  <div className="flex items-center gap-4 sm:gap-5">
+                    {/* Node — rides the card's entry corner on desktop */}
+                    <div
+                      className={`relative z-20 shrink-0 lg:absolute lg:-top-4 lg:m-0 ${
+                        badgeRight ? 'lg:-right-4 lg:left-auto' : 'lg:-left-4'
+                      }`}
+                    >
+                      <div
+                        className="relative grid size-11 place-items-center rounded-full transition-transform duration-300 hover:scale-110"
+                        style={{
+                          background: '#0D1425',
+                          border: `2px solid ${step.accent}`,
+                          boxShadow: `0 0 0 4px #0D1425, 0 0 20px ${step.glow}`,
+                        }}
                       >
-                        {step.phaseTag}
-                      </span>
-                      <h4 className="mt-0.5 font-display text-sm font-bold text-white leading-snug">
-                        {step.title}
-                      </h4>
-                      <p className="mt-1.5 text-[11px] leading-relaxed text-[#9ca3af]">
-                        {step.desc}
-                      </p>
+                        <Icon className="size-[18px]" style={{ color: step.accent }} />
+                        <span
+                          className="absolute -right-1.5 -top-1.5 grid size-5 place-items-center rounded-full font-mono text-[9px] font-bold text-white"
+                          style={{ background: step.accent, boxShadow: `0 0 10px ${step.glow}` }}
+                        >
+                          {step.num}
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Bottom Pipeline Progress Notches */}
-                  <div className="mt-4 pt-2.5 border-t border-[rgba(94,23,235,0.12)] flex items-center justify-between">
-                    <span className="font-mono text-[9px] text-[#68738D]">{step.code}</span>
-                    <span
-                      className="size-1.5 rounded-full"
-                      style={{ background: step.accent }}
-                    />
+                    {/* Step card */}
+                    <Reveal y={18} delay={idx * 0.04} className="min-w-0 flex-1">
+                      <div
+                        className="group relative h-full overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 sm:p-6"
+                        style={{
+                          background: '#0D1425',
+                          border: `1px solid ${step.accent}30`,
+                          boxShadow: `0 4px 24px -10px ${step.glow}`,
+                        }}
+                      >
+                        {/* Accent spine on the edge nearest the path */}
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-y-0 left-0 w-0.5"
+                          style={{
+                            background: `linear-gradient(180deg, ${step.accent} 0%, transparent 100%)`,
+                          }}
+                        />
+                        <div
+                          aria-hidden="true"
+                          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                          style={{
+                            background: `radial-gradient(70% 90% at 12% 0%, ${step.accent}14 0%, transparent 70%)`,
+                          }}
+                        />
+
+                        <div className="flex items-center justify-between gap-3">
+                          <span
+                            className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em]"
+                            style={{ color: step.accent }}
+                          >
+                            {step.phaseTag}
+                          </span>
+                          <span className="font-mono text-[10px] text-[#68738D]">{step.code}</span>
+                        </div>
+                        <h4 className="mt-2.5 font-display text-lg font-bold text-white sm:text-xl">
+                          {step.title}
+                        </h4>
+                        <p className="mt-2 text-sm leading-relaxed text-[#9ca3af]">{step.desc}</p>
+                      </div>
+                    </Reveal>
                   </div>
                 </div>
-              </Reveal>
-            )
-          })}
+              )
+            })}
+
+            {/* Phase handoff marker sitting in the snake's middle gap (desktop) */}
+            <div
+              aria-hidden="true"
+              className="hidden lg:col-start-3 lg:row-start-2 lg:flex lg:items-center lg:justify-center"
+            >
+              <span
+                className="rounded-full px-3.5 py-1.5 text-center font-mono text-[9px] font-semibold uppercase tracking-[0.22em] backdrop-blur-md"
+                style={{
+                  background: 'rgba(13, 20, 37, 0.95)',
+                  border: '1px solid rgba(56, 189, 248, 0.45)',
+                  color: '#38bdf8',
+                  boxShadow: '0 0 18px rgba(56, 189, 248, 0.25)',
+                }}
+              >
+                Phase 01 → Phase 02
+              </span>
+            </div>
+
+            {/* Flow arrows stitching the snake together (desktop) */}
+            {flowLinks.map((link) => (
+              <div
+                key={`${link.kind}-${link.row}-${link.col}`}
+                aria-hidden="true"
+                className={`relative hidden lg:flex ${
+                  link.kind === 'h' ? 'items-center' : 'lg:flex-col lg:items-center'
+                }`}
+                style={{ gridColumn: link.col, gridRow: link.row }}
+              >
+                {link.kind === 'h' ? (
+                  <FlowArrowH
+                    from={pipelineSteps[link.from].accent}
+                    to={pipelineSteps[link.to].accent}
+                    dir={link.dir}
+                  />
+                ) : (
+                  <FlowArrowV
+                    from={pipelineSteps[link.from].accent}
+                    to={pipelineSteps[link.to].accent}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
