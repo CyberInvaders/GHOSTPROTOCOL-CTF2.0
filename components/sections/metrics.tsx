@@ -22,7 +22,7 @@ const metrics = [
     prefix: '',
     suffix: '+',
     label: 'Expected Students',
-    sub: 'Student cybersecurity hackers',
+    sub: 'Undergrad & postgrad hackers',
     badge: 'EXPECTED',
     back: 'Projected Participation: 1,500+ passionate undergraduate & postgraduate ethical hackers competing in the qualification round.',
   },
@@ -48,9 +48,9 @@ const metrics = [
   {
     icon: MonitorSmartphone,
     count: null,
-    static: 'Online + Offline',
+    static: '2 Rounds',
     label: 'Tournament Format',
-    sub: 'Remote prelims → NIET Finale',
+    sub: 'Online prelims → NIET grand finale',
     badge: 'FORMAT',
     back: 'Two-Stage Combat: 24-hr remote Jeopardy prelims followed by an 8-hour live on-ground Attack & Defense siege at NIET.',
   },
@@ -59,7 +59,7 @@ const metrics = [
     count: null,
     static: 'Industry',
     label: 'Exposure & Rigor',
-    sub: 'Real-world attack operations',
+    sub: 'Real-world attack scenarios',
     badge: 'IMPACT',
     back: 'Real-world Scenarios: Practical challenges modeled after enterprise incident responses and current threat-actor TTPs.',
   },
@@ -69,17 +69,17 @@ export function Metrics() {
   return (
     <section className="relative py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-4">
-        <StaggerGroup className="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="grid grid-cols-1 auto-rows-fr gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {metrics.map((m) => (
             <motion.div
               key={m.label}
               variants={staggerItem}
-              className="flip-scene group relative min-h-[240px] sm:min-h-[260px]"
+              className="flip-scene group relative min-h-[250px] sm:min-h-[280px]"
             >
               <div className="flip-inner flex flex-col">
                 {/* ── Front face ── */}
                 <div
-                  className="flip-face flip-face-front flex flex-col justify-between overflow-hidden rounded-xl glass-strong p-5 sm:p-7 md:p-8"
+                  className="flip-face flip-face-front flex flex-1 flex-col justify-between overflow-hidden rounded-xl glass-strong p-5 sm:p-7 md:p-8"
                   style={{ background: '#0D1425' }}
                 >
                   <div
@@ -104,7 +104,7 @@ export function Metrics() {
                     </div>
 
                     <div
-                      className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight"
+                      className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight"
                       style={{ color: '#F8FAFC' }}
                     >
                       {m.count !== null ? (
