@@ -92,7 +92,7 @@ export function Institution() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-[300px] sm:h-[400px] md:h-[460px] overflow-hidden rounded-2xl drop-shadow-[0_0_35px_rgba(94,23,235,0.35)] group"
+            className="relative h-[300px] sm:h-[400px] md:h-[460px] lg:h-full overflow-hidden rounded-2xl drop-shadow-[0_0_35px_rgba(94,23,235,0.35)] group"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
