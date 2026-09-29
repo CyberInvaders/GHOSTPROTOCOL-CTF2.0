@@ -12,7 +12,6 @@ import { Sponsors } from '@/components/sections/sponsors'
 import { Team } from '@/components/sections/team'
 import { Faq } from '@/components/sections/faq'
 import { Contact } from '@/components/sections/contact'
-import { Announcement } from '@/components/sections/announcement'
 import { FinalCta } from '@/components/sections/final-cta'
 import { SiteFooter } from '@/components/sections/site-footer'
 import { CtfParticleOutro } from '@/components/sections/ctf-particle-outro'
@@ -34,7 +33,6 @@ export default function Page() {
       <Team />
       <Faq />
       <Contact />
-      <Announcement />
       <FinalCta />
       <SiteFooter />
       <CtfParticleOutro />

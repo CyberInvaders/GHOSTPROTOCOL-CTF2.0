@@ -17,8 +17,7 @@ export const siteLinks = {
   
   // Registration & CTF Portal
   register: '#register',
-  announcement: '#announcement',
-  
+
   // Location & Maps
   googleMaps: 'https://maps.google.com/?q=Noida+Institute+of+Engineering+and+Technology+Greater+Noida',
   googleMapsDirections: 'https://www.google.com/maps/dir/?api=1&destination=Noida+Institute+of+Engineering+and+Technology,+Greater+Noida',
