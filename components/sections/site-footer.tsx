@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { AtSign, Mail, ExternalLink } from 'lucide-react'
 import { siteLinks } from '@/lib/links'
+import { useSectionHref } from '@/lib/use-section-href'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
 
 const socials = [
@@ -19,6 +20,7 @@ const navColumns = [
       { label: 'Overview', href: siteLinks.nav.overview },
       { label: 'Timeline', href: siteLinks.nav.timeline },
       { label: 'Categories', href: siteLinks.nav.categories },
+      { label: 'Glimpses', href: '/glimpses' },
       { label: 'Sponsors', href: siteLinks.nav.sponsors },
     ],
   },
@@ -38,6 +40,8 @@ const navColumns = [
  * Styled as a system status readout.
  */
 export function SiteFooter() {
+  const toSection = useSectionHref()
+
   return (
     <footer
       className="relative"
@@ -169,7 +173,7 @@ export function SiteFooter() {
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <a
-                      href={l.href}
+                      href={toSection(l.href)}
                       target={l.external ? '_blank' : undefined}
                       rel={l.external ? 'noopener noreferrer' : undefined}
                       className="group flex items-center gap-1.5 text-sm transition-colors hover:text-[#f8fafc]"

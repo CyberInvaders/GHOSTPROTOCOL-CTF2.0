@@ -7,6 +7,7 @@ import { Club } from '@/components/sections/club'
 import { Institution } from '@/components/sections/institution'
 import { Metrics } from '@/components/sections/metrics'
 import { Glimpses } from '@/components/sections/glimpses'
+import { GlimpsesCta } from '@/components/sections/glimpses-cta'
 import { Sponsors } from '@/components/sections/sponsors'
 import { Team } from '@/components/sections/team'
 import { Faq } from '@/components/sections/faq'
@@ -28,6 +29,7 @@ export default function Page() {
       <Institution />
       <Metrics />
       <Glimpses />
+      <GlimpsesCta />
       <Sponsors />
       <Team />
       <Faq />

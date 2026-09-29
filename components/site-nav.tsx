@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import { siteLinks } from '@/lib/links'
+import { useSectionHref } from '@/lib/use-section-href'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
 
 const links = [
@@ -12,6 +13,7 @@ const links = [
   { label: 'Timeline',  href: '#timeline' },
   { label: 'Category',  href: '#categories' },
   { label: 'About',     href: '#club' },
+  { label: 'Glimpses',  href: '/glimpses' },
   { label: 'Sponsors',  href: '#sponsors' },
   { label: 'Team',      href: '#team' },
   { label: "FAQ's",     href: '#faq' },
@@ -21,6 +23,7 @@ const links = [
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const toSection = useSectionHref()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -75,7 +78,7 @@ export function SiteNav() {
           }
         >
           {/* Logo: NIET Full Logo x Cyber Invaders Full Logo */}
-          <a href="#top" className="group flex shrink-0 items-center">
+          <a href={toSection('#top')} className="group flex shrink-0 items-center">
             <div className="flex items-center gap-1.5 sm:gap-2.5 py-0.5">
               <Image
                 src="/niet-full-logo.webp"
@@ -102,7 +105,7 @@ export function SiteNav() {
             {links.map((l) => (
               <a
                 key={l.href}
-                href={l.href}
+                href={toSection(l.href)}
                 className="rounded-lg px-3 py-2 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {l.label}
@@ -177,7 +180,7 @@ export function SiteNav() {
                 {links.map((l) => (
                   <a
                     key={l.href}
-                    href={l.href}
+                    href={toSection(l.href)}
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium text-[#CBD5E1] transition-all hover:bg-[#111A2E] hover:text-white active:bg-[#5e17eb]/20"
                   >
