@@ -142,24 +142,24 @@ export function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.55 }}
-          className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3.5 sm:gap-4"
         >
           <a
             href="#register"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3 sm:w-auto sm:px-7 sm:py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#4a10c4] active:scale-[0.98]"
+            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-7 py-4 sm:w-auto sm:px-8 sm:py-4 text-base font-semibold text-white transition-all hover:bg-[#4a10c4] active:scale-[0.98]"
             style={{
               background: '#5e17eb',
               boxShadow: '0 8px 24px -12px rgba(94, 23, 235, 0.6)',
             }}
           >
             Register Now
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="size-[18px] transition-transform group-hover:translate-x-1" />
           </a>
           <a
             href={siteLinks.whatsappChannel}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3 sm:w-auto sm:px-7 sm:py-3.5 text-sm font-semibold transition-all active:scale-[0.98]"
+            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-7 py-4 sm:w-auto sm:px-8 sm:py-4 text-base font-semibold transition-all active:scale-[0.98]"
             style={{
               border: '1px solid rgba(37, 211, 102, 0.35)',
               background: 'rgba(37, 211, 102, 0.08)',
@@ -167,7 +167,7 @@ export function Hero() {
               boxShadow: '0 8px 24px -14px rgba(37, 211, 102, 0.6)',
             }}
           >
-            <WhatsAppIcon className="size-4" style={{ color: '#25D366' }} />
+            <WhatsAppIcon className="size-[18px]" style={{ color: '#25D366' }} />
             Join Announcement Channel
           </a>
         </motion.div>
