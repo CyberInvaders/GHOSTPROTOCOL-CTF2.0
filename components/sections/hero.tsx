@@ -86,16 +86,11 @@ export function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
-          className="mx-auto mt-4 sm:mt-5 flex max-w-2xl flex-col items-center gap-1 sm:gap-1.5 font-mono text-xs sm:text-sm"
-          style={{ color: '#9ca3af' }}
+          className="mx-auto mt-4 sm:mt-5 flex max-w-3xl flex-wrap items-center justify-center gap-x-2 gap-y-1 font-mono text-xs sm:text-sm"
         >
-          <span>
-            <span style={{ color: '#F8FAFC' }}>Online Qualification Round</span>
-            <span className="mx-1.5 sm:mx-2" style={{ color: '#68738D' }}>+</span>
-          </span>
-          <span style={{ color: '#F8FAFC' }}>
-            Offline Grand Finale at NIET Greater Noida
-          </span>
+          <span style={{ color: '#F8FAFC' }}>Online Qualification Round</span>
+          <span style={{ color: '#68738D' }}>+</span>
+          <span style={{ color: '#F8FAFC' }}>Offline Grand Finale at NIET Greater Noida</span>
         </motion.div>
 
         {/* Prize pool + finale countdown */}
