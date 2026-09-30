@@ -279,7 +279,7 @@ export function Structure() {
                   </div>
 
                   <span
-                    className="hidden sm:inline-flex rounded-full px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#a78bfa]"
+                    className="hidden shrink-0 whitespace-nowrap sm:inline-flex rounded-full px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#a78bfa]"
                     style={{
                       background: 'rgba(94, 23, 235, 0.12)',
                       border: '1px solid rgba(94, 23, 235, 0.3)',
@@ -381,7 +381,7 @@ export function Structure() {
                   </div>
 
                   <span
-                    className="hidden sm:inline-flex rounded-full px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#e83e8c]"
+                    className="hidden shrink-0 whitespace-nowrap sm:inline-flex rounded-full px-3 py-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#e83e8c]"
                     style={{
                       background: 'rgba(232, 62, 140, 0.12)',
                       border: '1px solid rgba(232, 62, 140, 0.3)',
