@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'What format does the CTF follow?',
-    a: 'The online qualification is a Jeopardy-style CTF with challenges across Web Exploitation, Cryptography, Forensics, OSINT, Reverse Engineering, Pwn, Steganography, Cloud Security, AI/LLM Security, and Miscellaneous categories. The grand finale adds an 8-hour Attack & Defense round.',
+    a: 'The online qualification is a Jeopardy-style CTF with challenges across Web Exploitation, Cryptography, Forensics, OSINT, Reverse Engineering, Pwn, Steganography, Cloud Security, AI/LLM Security, and Miscellaneous categories. The grand finale is a 12-hour Jeopardy-style round with high-complexity challenges.',
   },
   {
     q: 'What are the event dates?',
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: 'How many teams get selected for the grand finale?',
-    a: 'The top 35 teams from the online qualification will be invited to the offline grand finale at NIET Greater Noida. The final shortlist and finale briefing will be shared in the announcement channel.',
+    a: 'The top 35 to 50 teams from the online qualification will be invited to the offline grand finale at NIET Greater Noida. The final shortlist and finale briefing will be shared in the announcement channel.',
   },
   {
     q: 'Will accommodation be provided for outstation teams?',

@@ -30,8 +30,8 @@ const phase1Highlights = [
 
 const phase2Highlights = [
   '24 Oct · Hosted on-ground at NIET Greater Noida campus',
-  'Dual-format: Jeopardy Round + Live Attack & Defense',
-  '8-hour continuous war-room showdown',
+  'Jeopardy-only format: 12-hour on-ground finale',
+  '12-hour continuous war-room showdown',
   '₹50,000 prize pool, trophies & national acclaim',
 ]
 
@@ -92,7 +92,7 @@ const pipelineSteps = [
     phaseTag: 'Phase 2 · Warfare',
     icon: Swords,
     title: 'On-Campus Showdown',
-    desc: '8-hour continuous cyber combat at NIET Greater Noida featuring live attack-defense warfare and high-tier challenges.',
+    desc: '12-hour continuous cyber combat at NIET Greater Noida featuring high-complexity Jeopardy challenges.',
     accent: '#f97316',
     glow: 'rgba(249, 115, 22, 0.35)',
   },
@@ -392,7 +392,7 @@ export function Structure() {
                 </div>
 
                 <p className="mt-4 text-sm leading-relaxed text-[#9ca3af]">
-                  Qualifying squads assemble on-ground at NIET Greater Noida for an intense 8-hour showdown combining high-complexity Jeopardy questions and real-time live Attack & Defense cyber warfare.
+                  Qualifying squads assemble on-ground at NIET Greater Noida for an intense 12-hour showdown featuring high-complexity Jeopardy challenges.
                 </p>
 
                 {/* Tech Pills Bar */}
@@ -404,7 +404,7 @@ export function Structure() {
                     🏛️ NIET Greater Noida
                   </span>
                   <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(232,62,140,0.2)]">
-                    ⚔️ Attack & Defense
+                    ⏱️ 12-Hour Finale
                   </span>
                   <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(232,62,140,0.2)]">
                     🏆 ₹50,000 Rewards
