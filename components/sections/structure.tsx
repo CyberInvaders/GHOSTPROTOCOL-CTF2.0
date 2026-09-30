@@ -2,9 +2,6 @@
 
 import { motion, useReducedMotion } from 'motion/react'
 import {
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
   Globe,
   Building2,
   Compass,
@@ -117,9 +114,9 @@ const pipelineSteps = [
                 ↓
      06 ← 05 ← 04
      ↓
-     07
-   Columns: card · 3.5rem link · card · 3.5rem link · card
-   Rows:    cards at 1/3/5, the two turns live in the 3rem rows 2 and 4. */
+     07 —─────────────────────  (finale spans the full width)
+   Columns: card · 4rem link · card · 4rem link · card
+   Rows:    cards at 1/3/5, the two turns live in the 3.5rem rows 2 and 4. */
 const snakeCells = [
   { col: 1, row: 1 },
   { col: 3, row: 1 },
@@ -127,7 +124,7 @@ const snakeCells = [
   { col: 5, row: 3 },
   { col: 3, row: 3 },
   { col: 1, row: 3 },
-  { col: 1, row: 5 },
+  { col: '1 / -1', row: 5 },
 ]
 
 const flowLinks = [
@@ -143,20 +140,32 @@ function FlowArrowH({ from, to, dir }: { from: string; to: string; dir: 'l2r' | 
   return (
     <>
       <div
-        className="h-0.5 flex-1 rounded-full"
+        className="h-1 flex-1 rounded-full"
         style={{
-          background:
-            dir === 'l2r'
-              ? `linear-gradient(90deg, ${from}, ${to})`
-              : `linear-gradient(90deg, ${to}, ${from})`,
-          marginRight: dir === 'l2r' ? '0.9rem' : 0,
-          marginLeft: dir === 'r2l' ? '0.9rem' : 0,
+          background: `linear-gradient(90deg, ${from}, ${to})`,
+          boxShadow: `0 0 12px ${to}55`,
+          marginRight: dir === 'l2r' ? '0.85rem' : 0,
+          marginLeft: dir === 'r2l' ? '0.85rem' : 0,
         }}
       />
       {dir === 'l2r' ? (
-        <ChevronRight className="absolute right-0 top-1/2 size-4 -translate-y-1/2" style={{ color: to }} />
+        <span
+          className="absolute right-0 top-1/2 size-0 -translate-y-1/2"
+          style={{
+            borderTop: '8px solid transparent',
+            borderBottom: '8px solid transparent',
+            borderLeft: `13px solid ${to}`,
+          }}
+        />
       ) : (
-        <ChevronLeft className="absolute left-0 top-1/2 size-4 -translate-y-1/2" style={{ color: to }} />
+        <span
+          className="absolute left-0 top-1/2 size-0 -translate-y-1/2"
+          style={{
+            borderTop: '8px solid transparent',
+            borderBottom: '8px solid transparent',
+            borderRight: `13px solid ${to}`,
+          }}
+        />
       )}
     </>
   )
@@ -166,13 +175,21 @@ function FlowArrowV({ from, to }: { from: string; to: string }) {
   return (
     <>
       <div
-        className="w-0.5 flex-1 rounded-full"
+        className="w-1 flex-1 rounded-full"
         style={{
           background: `linear-gradient(180deg, ${from}, ${to})`,
-          marginBottom: '0.9rem',
+          boxShadow: `0 0 12px ${to}55`,
+          marginBottom: '0.85rem',
         }}
       />
-      <ChevronDown className="absolute bottom-0 left-1/2 size-4 -translate-x-1/2" style={{ color: to }} />
+      <span
+        className="absolute bottom-0 left-1/2 size-0 -translate-x-1/2"
+        style={{
+          borderLeft: '8px solid transparent',
+          borderRight: '8px solid transparent',
+          borderTop: `13px solid ${to}`,
+        }}
+      />
     </>
   )
 }
@@ -473,7 +490,7 @@ export function Structure() {
             )}
           </div>
 
-          <div className="space-y-6 sm:space-y-8 lg:grid lg:grid-cols-[1fr_3.5rem_1fr_3.5rem_1fr] lg:grid-rows-[auto_3rem_auto_3rem_auto] lg:space-y-0">
+          <div className="space-y-6 sm:space-y-8 lg:grid lg:grid-cols-[1fr_4rem_1fr_4rem_1fr] lg:grid-rows-[auto_3.5rem_auto_3.5rem_auto] lg:space-y-0">
             {pipelineSteps.map((step, idx) => {
               const Icon = step.icon
               const badgeRight = idx >= 3 && idx <= 5
@@ -501,15 +518,15 @@ export function Structure() {
                     </div>
                   )}
 
-                  <div className="flex items-center gap-4 sm:gap-5">
-                    {/* Node — rides the card's entry corner on desktop */}
+                  <div className="flex items-center gap-4 sm:gap-5 lg:items-stretch lg:gap-0">
+                    {/* Node — centred on the card's entry corner on desktop */}
                     <div
-                      className={`relative z-20 shrink-0 lg:absolute lg:-top-4 lg:m-0 ${
-                        badgeRight ? 'lg:-right-4 lg:left-auto' : 'lg:-left-4'
+                      className={`relative z-20 shrink-0 lg:absolute lg:-top-6 lg:m-0 ${
+                        badgeRight ? 'lg:-right-6 lg:left-auto' : 'lg:-left-6'
                       }`}
                     >
                       <div
-                        className="relative grid size-11 place-items-center rounded-full transition-transform duration-300 hover:scale-110"
+                        className="relative grid size-11 place-items-center rounded-full transition-transform duration-300 hover:scale-110 lg:size-12"
                         style={{
                           background: '#0D1425',
                           border: `2px solid ${step.accent}`,
@@ -552,19 +569,42 @@ export function Structure() {
                           }}
                         />
 
-                        <div className="flex items-center justify-between gap-3">
-                          <span
-                            className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em]"
-                            style={{ color: step.accent }}
-                          >
-                            {step.phaseTag}
-                          </span>
-                          <span className="font-mono text-[10px] text-[#68738D]">{step.code}</span>
+                        <div className={idx === 6 ? 'lg:flex lg:h-full lg:items-center lg:justify-between lg:gap-10' : undefined}>
+                          <div className={idx === 6 ? 'lg:max-w-2xl' : undefined}>
+                            <div className="flex items-center justify-between gap-3">
+                              <span
+                                className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em]"
+                                style={{ color: step.accent }}
+                              >
+                                {step.phaseTag}
+                              </span>
+                              <span className="font-mono text-[10px] text-[#68738D]">{step.code}</span>
+                            </div>
+                            <h4 className="mt-2.5 font-display text-lg font-bold text-white sm:text-xl">
+                              {step.title}
+                            </h4>
+                            <p className="mt-2 text-sm leading-relaxed text-[#9ca3af]">{step.desc}</p>
+                          </div>
+                          {idx === 6 && (
+                            <div className="mt-5 flex flex-wrap gap-2 lg:mt-0 lg:shrink-0">
+                              {['₹50,000 Cash Pool', 'Trophies & Certificates', 'National Acclaim'].map(
+                                (chip) => (
+                                  <span
+                                    key={chip}
+                                    className="rounded-lg px-3 py-1.5 font-mono text-[11px] font-semibold"
+                                    style={{
+                                      background: 'rgba(232, 62, 140, 0.12)',
+                                      border: '1px solid rgba(232, 62, 140, 0.35)',
+                                      color: '#f9a8d4',
+                                    }}
+                                  >
+                                    {chip}
+                                  </span>
+                                ),
+                              )}
+                            </div>
+                          )}
                         </div>
-                        <h4 className="mt-2.5 font-display text-lg font-bold text-white sm:text-xl">
-                          {step.title}
-                        </h4>
-                        <p className="mt-2 text-sm leading-relaxed text-[#9ca3af]">{step.desc}</p>
                       </div>
                     </Reveal>
                   </div>
@@ -575,8 +615,13 @@ export function Structure() {
             {/* Phase handoff marker sitting in the snake's middle gap (desktop) */}
             <div
               aria-hidden="true"
-              className="hidden lg:col-start-3 lg:row-start-2 lg:flex lg:items-center lg:justify-center"
+              className="hidden lg:col-start-3 lg:row-start-2 lg:flex lg:items-center lg:justify-center lg:gap-4"
             >
+              <span
+                aria-hidden="true"
+                className="hidden w-10 border-t border-dashed lg:block"
+                style={{ borderColor: 'rgba(56, 189, 248, 0.45)' }}
+              />
               <span
                 className="rounded-full px-3.5 py-1.5 text-center font-mono text-[9px] font-semibold uppercase tracking-[0.22em] backdrop-blur-md"
                 style={{
@@ -588,6 +633,11 @@ export function Structure() {
               >
                 Phase 01 → Phase 02
               </span>
+              <span
+                aria-hidden="true"
+                className="hidden w-10 border-t border-dashed lg:block"
+                style={{ borderColor: 'rgba(56, 189, 248, 0.45)' }}
+              />
             </div>
 
             {/* Flow arrows stitching the snake together (desktop) */}
