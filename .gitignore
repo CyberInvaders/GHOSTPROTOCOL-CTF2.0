@@ -18,5 +18,6 @@ node_modules
 .vscode/
 *.tsbuildinfo
 
-# This project uses pnpm — ignore npm lockfile if it reappears
-package-lock.json
+# Lockfile IS committed — Vercel needs it for a deterministic install
+# (the old "uses pnpm" ignore left the repo with no lockfile at all,
+#  which is what broke the Vercel deployment)
