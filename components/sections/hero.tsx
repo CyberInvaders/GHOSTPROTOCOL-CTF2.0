@@ -91,7 +91,15 @@ export function Hero() {
           <span style={{ color: '#F8FAFC' }}>Online Qualification Round</span>
           <span style={{ color: '#68738D' }}>+</span>
           <span style={{ color: '#F8FAFC' }}>Offline Grand Finale at NIET Greater Noida</span>
-          {/* Highlighted chip — not part of the plain + list */}
+        </motion.div>
+
+        {/* Highlighted chip — its own row so it never rides up against the format line */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-3 flex justify-center sm:mt-3.5"
+        >
           <span
             className="relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] sm:text-[11px]"
             style={{
@@ -126,7 +134,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}
-          className="mx-auto mt-8 sm:mt-10 grid max-w-2xl grid-cols-1 gap-2 sm:grid-cols-5 sm:gap-3"
+          className="mx-auto mt-3 grid max-w-2xl grid-cols-1 gap-2 sm:mt-3.5 sm:grid-cols-5 sm:gap-3"
         >
           {/* Prize pool — first card */}
           <div
