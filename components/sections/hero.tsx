@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
-import { ArrowRight, Trophy } from 'lucide-react'
+import { ArrowRight, Trophy, Shapes } from 'lucide-react'
 import { GlitchText } from '@/components/glitch-text'
 import { siteLinks } from '@/lib/links'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
@@ -91,8 +91,34 @@ export function Hero() {
           <span style={{ color: '#F8FAFC' }}>Online Qualification Round</span>
           <span style={{ color: '#68738D' }}>+</span>
           <span style={{ color: '#F8FAFC' }}>Offline Grand Finale at NIET Greater Noida</span>
-          <span style={{ color: '#68738D' }}>+</span>
-          <span style={{ color: '#a78bfa' }}>Open for All Branches</span>
+          {/* Highlighted chip — not part of the plain + list */}
+          <span
+            className="relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] sm:text-[11px]"
+            style={{
+              color: '#EDE9FE',
+              background: 'rgba(94, 23, 235, 0.16)',
+              border: '1px solid rgba(167, 139, 250, 0.45)',
+              boxShadow:
+                'inset 0 1px 0 rgba(255,255,255,0.06), 0 0 18px -8px rgba(139, 92, 246, 0.9)',
+            }}
+          >
+            {/* leading status dot */}
+            <span className="size-1.5 shrink-0 rounded-full bg-[#a78bfa] shadow-[0_0_6px_#a78bfa]" />
+            {/* corner tick, top-left */}
+            <span
+              aria-hidden="true"
+              className="absolute left-[-1px] top-[-1px] size-1.5 border-l border-t"
+              style={{ borderColor: 'rgba(216, 180, 254, 0.9)' }}
+            />
+            {/* corner tick, bottom-right */}
+            <span
+              aria-hidden="true"
+              className="absolute bottom-[-1px] right-[-1px] size-1.5 border-b border-r"
+              style={{ borderColor: 'rgba(216, 180, 254, 0.9)' }}
+            />
+            <Shapes className="size-3 shrink-0" style={{ color: '#c4b5fd' }} strokeWidth={2} />
+            <span>Open for All Branches</span>
+          </span>
         </motion.div>
 
         {/* Prize pool + finale countdown */}
