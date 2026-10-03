@@ -160,7 +160,7 @@ export function FinalCta() {
           }`}
         >
           <a
-            href={siteLinks.instagram}
+            href={siteLinks.register}
             target="_blank"
             rel="noopener noreferrer"
             className="sys-btn group"

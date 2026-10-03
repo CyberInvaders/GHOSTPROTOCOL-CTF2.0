@@ -176,7 +176,9 @@ export function Hero() {
           className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3.5 sm:gap-4"
         >
           <a
-            href="#register"
+            href={siteLinks.register}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-7 py-4 sm:w-auto sm:px-8 sm:py-4 text-base font-semibold text-white transition-all hover:bg-[#4a10c4] active:scale-[0.98]"
             style={{
               background: '#5e17eb',

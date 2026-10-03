@@ -16,7 +16,7 @@ export const siteLinks = {
   mailto: 'mailto:cyberinvaders@niet.co.in?subject=Ghost%20Protocol%20CTF%202.0%20Inquiry',
   
   // Registration & CTF Portal
-  register: '#register',
+  register: 'https://unstop.com/o/YKi3ZTt',
 
   // Location & Maps
   googleMaps: 'https://maps.google.com/?q=Noida+Institute+of+Engineering+and+Technology+Greater+Noida',
