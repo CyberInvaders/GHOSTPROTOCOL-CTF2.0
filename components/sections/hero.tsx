@@ -91,6 +91,8 @@ export function Hero() {
           <span style={{ color: '#F8FAFC' }}>Online Qualification Round</span>
           <span style={{ color: '#68738D' }}>+</span>
           <span style={{ color: '#F8FAFC' }}>Offline Grand Finale at NIET Greater Noida</span>
+          <span style={{ color: '#68738D' }}>+</span>
+          <span style={{ color: '#a78bfa' }}>Open for All Branches</span>
         </motion.div>
 
         {/* Prize pool + finale countdown */}

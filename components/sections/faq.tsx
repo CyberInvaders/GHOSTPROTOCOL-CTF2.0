@@ -9,7 +9,7 @@ import { Reveal } from '@/components/motion-primitives'
 const faqs = [
   {
     q: 'Who can participate in Ghost Protocol CTF 2.0?',
-    a: 'Any student currently enrolled in an undergraduate or postgraduate program is eligible to participate. Teams can have up to 3 members. All members must be students at the time of the event.',
+    a: 'Open for all branches and all years. Any student currently enrolled in an undergraduate or postgraduate program — CSE, IT, ECE, ME, CE, MBA, BBA or any other stream — is eligible to participate. Teams can have up to 3 members. All members must be students at the time of the event.',
   },
   {
     q: 'Is there a registration fee?',

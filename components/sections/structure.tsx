@@ -305,6 +305,9 @@ export function Structure() {
                     📡 Pan-India Remote
                   </span>
                   <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(94,23,235,0.18)]">
+                    🧩 Open for All Branches
+                  </span>
+                  <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(94,23,235,0.18)]">
                     ⏱️ Dynamic Scoring
                   </span>
                 </div>
