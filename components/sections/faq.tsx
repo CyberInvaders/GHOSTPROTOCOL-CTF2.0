@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: 'What is the prize pool?',
-    a: 'The total prize pool is ₹50,000 — 1st place wins ₹25,000, 2nd place ₹15,000 and 3rd place ₹10,000. Trophies, certificates and goodies will also be awarded to winners and finalists.',
+    a: 'The total prize pool is ₹51,000 — 1st place wins ₹25,000, 2nd place ₹15,000 and 3rd place ₹10,000. Trophies, certificates and goodies will also be awarded to winners and finalists.',
   },
   {
     q: 'How do I stay updated about announcements?',
