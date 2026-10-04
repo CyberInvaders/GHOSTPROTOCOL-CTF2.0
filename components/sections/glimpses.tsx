@@ -2,7 +2,7 @@
 
 import { SectionHeading } from '@/components/section-heading'
 import { ArchiveGallery } from '@/components/sections/archive-gallery'
-import { archivePhotos } from '@/lib/archive-photos'
+import { homepagePhotos } from '@/lib/archive-photos'
 
 export function Glimpses() {
   return (
@@ -15,7 +15,7 @@ export function Glimpses() {
         />
 
         <div className="mt-14">
-          <ArchiveGallery photos={archivePhotos} />
+          <ArchiveGallery photos={homepagePhotos} />
         </div>
       </div>
     </section>
