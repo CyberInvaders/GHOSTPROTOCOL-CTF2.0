@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     q: 'What is the prize pool?',
-    a: 'The total prize pool is ₹51,000, covering cash prizes, trophies, certificates and goodies. The exact split between placement prizes and on-ground rewards will be announced after registrations close.',
+    a: 'The total prize pool is up to ₹51,000, covering cash prizes, trophies, certificates and goodies. The exact split between placement prizes and on-ground rewards will be announced after registrations close.',
   },
   {
     q: 'How do I stay updated about announcements?',

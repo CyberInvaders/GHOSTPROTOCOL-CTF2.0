@@ -150,7 +150,7 @@ export function Hero() {
               className="font-display text-lg sm:text-2xl font-bold"
               style={{ color: '#F8FAFC' }}
             >
-              ₹51,000
+              Up to ₹51,000
             </div>
             <div className="mt-0.5 text-[10px] sm:text-xs" style={{ color: '#68738D' }}>Prize Pool</div>
           </div>
