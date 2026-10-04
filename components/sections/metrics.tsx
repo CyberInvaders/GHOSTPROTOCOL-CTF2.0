@@ -34,7 +34,7 @@ const metrics = [
     label: 'Prize Pool',
     sub: 'Guaranteed rewards & bounties',
     badge: 'REWARDS',
-    back: 'Guaranteed Pool: ₹51,000 cash — 1st ₹25,000, 2nd ₹15,000, 3rd ₹10,000, plus champion trophies, certificates of merit & exclusive goodies.',
+    back: 'Guaranteed Pool: ₹51,000+ covering cash prizes, champion trophies, certificates of merit & exclusive goodies — a combined reward for top teams and finalists.',
   },
   {
     icon: Globe,
