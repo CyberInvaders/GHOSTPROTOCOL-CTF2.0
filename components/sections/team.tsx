@@ -103,7 +103,7 @@ const coreLeads = [
     team: 'Faculty Council',
     tag: 'FACULTY',
     color: '#5e17eb',
-    image: null,
+    image: '/harsh-chauhan.webp',
   },
   {
     name: 'Miss Deepika Singh',
