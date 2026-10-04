@@ -22,7 +22,7 @@ export const archivePhotos: ArchivePhoto[] = [
   { src: '/archive-1.webp', w: 1200, h: 789, alt: 'Hands-on workshop session with mentors' },
   { src: '/archive-2.webp', w: 1200, h: 878, alt: 'Cyber Invaders group photo on stage' },
   { src: '/archive-3.webp', w: 1200, h: 995, alt: 'Cyber Invaders team on stage' },
-  { src: '/archive-8.webp', w: 1200, h: 1181, alt: 'Trophy handover moment' },
+  { src: '/archive-8.webp', w: 720, h: 960, alt: 'Trophy presentation at the closing ceremony' },
   { src: '/archive-4.webp', w: 1200, h: 626, alt: 'Students at competition workstations' },
   { src: '/archive-5.webp', w: 1200, h: 645, alt: 'Workshop wide view' },
   { src: '/archive-6.webp', w: 1200, h: 892, alt: 'Team collaboration shot' },
