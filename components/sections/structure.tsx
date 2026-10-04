@@ -32,7 +32,7 @@ const phase2Highlights = [
   '24 Oct · Hosted on-ground at NIET Greater Noida campus',
   'Jeopardy-only format: 12-hour on-ground finale',
   '12-hour continuous war-room showdown',
-  '₹50,000 prize pool, trophies & national acclaim',
+  '₹51,000 prize pool, trophies & national acclaim',
 ]
 
 const pipelineSteps = [
@@ -42,7 +42,7 @@ const pipelineSteps = [
     phaseTag: 'Phase 1 · Prep',
     icon: Compass,
     title: 'Discover Event',
-    desc: 'Explore the tournament format, 10 challenge categories, scoring dynamics and the ₹50,000 prize stakes.',
+    desc: 'Explore the tournament format, 10 challenge categories, scoring dynamics and the ₹51,000 prize stakes.',
     accent: '#5e17eb',
     glow: 'rgba(94, 23, 235, 0.35)',
   },
@@ -102,7 +102,7 @@ const pipelineSteps = [
     phaseTag: 'Phase 2 · Podium',
     icon: Award,
     title: 'Championship Podium',
-    desc: 'Win recognition, claim your share of the ₹50,000 cash pool, prestige trophies, certificates and industry acclaim.',
+    desc: 'Win recognition, claim your share of the ₹51,000 cash pool, prestige trophies, certificates and industry acclaim.',
     accent: '#e83e8c',
     glow: 'rgba(232, 62, 140, 0.4)',
   },
@@ -305,6 +305,9 @@ export function Structure() {
                     📡 Pan-India Remote
                   </span>
                   <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(94,23,235,0.18)]">
+                    🧩 Open for All Branches
+                  </span>
+                  <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(94,23,235,0.18)]">
                     ⏱️ Dynamic Scoring
                   </span>
                 </div>
@@ -407,7 +410,7 @@ export function Structure() {
                     ⏱️ 12-Hour Finale
                   </span>
                   <span className="rounded-lg px-2.5 py-1 bg-[#111A2E] text-[#CBD5E1] border border-[rgba(232,62,140,0.2)]">
-                    🏆 ₹50,000 Rewards
+                    🏆 ₹51,000 Rewards
                   </span>
                 </div>
 
@@ -587,7 +590,7 @@ export function Structure() {
                           </div>
                           {idx === 6 && (
                             <div className="mt-5 flex flex-wrap gap-2 lg:mt-0 lg:shrink-0">
-                              {['₹50,000 Cash Pool', 'Trophies & Certificates', 'National Acclaim'].map(
+                              {['₹51,000 Cash Pool', 'Trophies & Certificates', 'National Acclaim'].map(
                                 (chip) => (
                                   <span
                                     key={chip}

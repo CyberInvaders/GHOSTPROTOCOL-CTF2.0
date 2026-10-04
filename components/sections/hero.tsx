@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
-import { ArrowRight, Trophy } from 'lucide-react'
+import { ArrowRight, Trophy, Shapes } from 'lucide-react'
 import { GlitchText } from '@/components/glitch-text'
 import { siteLinks } from '@/lib/links'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
@@ -93,12 +93,48 @@ export function Hero() {
           <span style={{ color: '#F8FAFC' }}>Offline Grand Finale at NIET Greater Noida</span>
         </motion.div>
 
+        {/* Highlighted chip — its own row so it never rides up against the format line */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-3 flex justify-center sm:mt-3.5"
+        >
+          <span
+            className="relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] sm:text-[11px]"
+            style={{
+              color: '#EDE9FE',
+              background: 'rgba(94, 23, 235, 0.16)',
+              border: '1px solid rgba(167, 139, 250, 0.45)',
+              boxShadow:
+                'inset 0 1px 0 rgba(255,255,255,0.06), 0 0 18px -8px rgba(139, 92, 246, 0.9)',
+            }}
+          >
+            {/* leading status dot */}
+            <span className="size-1.5 shrink-0 rounded-full bg-[#a78bfa] shadow-[0_0_6px_#a78bfa]" />
+            {/* corner tick, top-left */}
+            <span
+              aria-hidden="true"
+              className="absolute left-[-1px] top-[-1px] size-1.5 border-l border-t"
+              style={{ borderColor: 'rgba(216, 180, 254, 0.9)' }}
+            />
+            {/* corner tick, bottom-right */}
+            <span
+              aria-hidden="true"
+              className="absolute bottom-[-1px] right-[-1px] size-1.5 border-b border-r"
+              style={{ borderColor: 'rgba(216, 180, 254, 0.9)' }}
+            />
+            <Shapes className="size-3 shrink-0" style={{ color: '#c4b5fd' }} strokeWidth={2} />
+            <span>Open for All Branches</span>
+          </span>
+        </motion.div>
+
         {/* Prize pool + finale countdown */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}
-          className="mx-auto mt-8 sm:mt-10 grid max-w-2xl grid-cols-1 gap-2 sm:grid-cols-5 sm:gap-3"
+          className="mx-auto mt-3 grid max-w-2xl grid-cols-1 gap-2 sm:mt-3.5 sm:grid-cols-5 sm:gap-3"
         >
           {/* Prize pool — first card */}
           <div
@@ -114,7 +150,7 @@ export function Hero() {
               className="font-display text-lg sm:text-2xl font-bold"
               style={{ color: '#F8FAFC' }}
             >
-              ₹50,000
+              ₹51,000
             </div>
             <div className="mt-0.5 text-[10px] sm:text-xs" style={{ color: '#68738D' }}>Prize Pool</div>
           </div>
@@ -140,7 +176,9 @@ export function Hero() {
           className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3.5 sm:gap-4"
         >
           <a
-            href="#register"
+            href={siteLinks.register}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-7 py-4 sm:w-auto sm:px-8 sm:py-4 text-base font-semibold text-white transition-all hover:bg-[#4a10c4] active:scale-[0.98]"
             style={{
               background: '#5e17eb',
