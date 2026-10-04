@@ -122,14 +122,6 @@ const coreLeads = [
     image: '/sumit-sir.webp',
   },
   {
-    name: 'Ashish Gupta',
-    role: 'Technical Head',
-    team: 'Cyber Invaders Club',
-    tag: 'TECH HEAD',
-    color: '#38bdf8',
-    image: '/ashish-gupta.webp',
-  },
-  {
     name: 'Ananya Paliwal',
     role: 'President',
     team: 'Cyber Invaders Club',
@@ -152,6 +144,14 @@ const coreLeads = [
     tag: 'VICE PRESIDENT',
     color: '#22c55e',
     image: '/aditya-kumar-singh.webp',
+  },
+  {
+    name: 'Ashish Gupta',
+    role: 'Technical Head',
+    team: 'Cyber Invaders Club',
+    tag: 'TECH HEAD',
+    color: '#38bdf8',
+    image: '/ashish-gupta.webp',
   },
 ]
 
