@@ -52,7 +52,7 @@ const metrics = [
     label: 'Tournament Format',
     sub: 'Online prelims → NIET grand finale',
     badge: 'FORMAT',
-    back: 'Two-Stage Combat: 24-hr remote Jeopardy prelims followed by a 12-hour live on-ground Jeopardy finale at NIET.',
+    back: 'Two-Stage Combat: 12-hr remote Jeopardy prelims followed by a 12-hour live on-ground Jeopardy finale at NIET.',
   },
   {
     icon: Building,

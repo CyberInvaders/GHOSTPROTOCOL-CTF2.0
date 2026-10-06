@@ -72,7 +72,7 @@ const pipelineSteps = [
     phaseTag: 'Phase 1 · Battle',
     icon: Globe,
     title: 'Online Qualification',
-    desc: 'Engage in a 24-hour remote Jeopardy CTF. Breach challenges, exploit systems, submit flags and scale the leaderboard.',
+    desc: 'Engage in a 12-hour remote Jeopardy CTF. Breach challenges, exploit systems, submit flags and scale the leaderboard.',
     accent: '#7c3aed',
     glow: 'rgba(124, 58, 237, 0.35)',
   },

@@ -6,6 +6,11 @@ import { motion, AnimatePresence } from 'motion/react'
 /** Event phases. Times are IST (+05:30). */
 export const PHASES = [
   {
+    id: 'registration',
+    label: 'Registrations close · 15 Oct',
+    at: new Date('2026-10-15T23:59:00+05:30').getTime(),
+  },
+  {
     id: 'qualifier',
     label: 'Qualifier · 17 Oct',
     at: new Date('2026-10-17T10:00:00+05:30').getTime(),

@@ -155,7 +155,7 @@ export function Hero() {
             <div className="mt-0.5 text-[10px] sm:text-xs" style={{ color: '#68738D' }}>Prize Pool</div>
           </div>
 
-          {/* Countdown — auto-switches from qualifier to grand finale */}
+          {/* Countdown — auto-switches from registration to qualifier to grand finale */}
           <div
             className="rounded-xl px-3 sm:px-4 py-3 sm:py-4 glass sm:col-span-3"
             style={{
