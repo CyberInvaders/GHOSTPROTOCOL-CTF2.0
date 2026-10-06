@@ -11,7 +11,7 @@ export const siteLinks = {
   // Official Social & Community Channels
   instagram: 'https://www.instagram.com/cyberinvaders_niet',
   linkedin: 'https://www.linkedin.com/school/niet-greater-noida',
-  whatsappChannel: 'https://chat.whatsapp.com/E5LBBtbd0vQKn89ByYMInQ', // Official WhatsApp Channel
+  whatsappChannel: 'https://chat.whatsapp.com/E6UCloQyKOy4HFxGbmo0cb', // Official WhatsApp Channel
   email: 'cyberinvaders@niet.co.in',
   mailto: 'mailto:cyberinvaders@niet.co.in?subject=Ghost%20Protocol%20CTF%202.0%20Inquiry',
   
