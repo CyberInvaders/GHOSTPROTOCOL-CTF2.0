@@ -13,7 +13,15 @@ const faqs = [
   },
   {
     q: 'Is there a registration fee?',
-    a: 'Yes. The registration fee is ₹149 per team (not per member), which covers the online qualification round. Teams selected for the offline grand finale do not pay any additional participation fee.',
+    a: (
+      <>
+        The registration fee is currently{' '}
+        <span className="line-through decoration-[#e83e8c] decoration-2">₹149</span>{' '}
+        <strong className="text-[#34d399]">Free</strong> per team (not per member), which
+        covers the online qualification round. Teams selected for the offline grand finale do
+        not pay any additional participation fee.
+      </>
+    ),
   },
   {
     q: 'What is the team size limit?',
@@ -53,7 +61,7 @@ const faqs = [
   },
 ]
 
-function FaqItem({ faq, index }: { faq: { q: string; a: string }; index: number }) {
+function FaqItem({ faq, index }: { faq: { q: string; a: React.ReactNode }; index: number }) {
   const [open, setOpen] = useState(false)
 
   return (
