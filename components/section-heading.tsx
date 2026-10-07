@@ -7,12 +7,15 @@ export function SectionHeading({
   description,
   align = 'center',
   index,
+  as: Heading = 'h2',
 }: {
   eyebrow?: string
   title: ReactNode
   description?: ReactNode
   align?: 'center' | 'left'
   index?: string
+  /** Standalone pages need a real <h1>; sections of the homepage stay <h2>. */
+  as?: 'h1' | 'h2'
 }) {
   const isCenter = align === 'center'
   return (
@@ -42,12 +45,12 @@ export function SectionHeading({
         </Reveal>
       ) : null}
       <Reveal delay={0.05}>
-        <h2
+        <Heading
           className="mt-5 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
           style={{ color: '#F8FAFC' }}
         >
           {title}
-        </h2>
+        </Heading>
       </Reveal>
       {description ? (
         <Reveal delay={0.1}>

@@ -1,67 +1,39 @@
 'use client'
 
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Plus, Minus } from 'lucide-react'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal } from '@/components/motion-primitives'
+import { useSectionHref } from '@/lib/use-section-href'
+import { faqs } from '@/lib/faq'
 
-const faqs = [
-  {
-    q: 'Who can participate in Ghost Protocol CTF 2.0?',
-    a: 'Open for all branches and all years. Any student currently enrolled in an undergraduate or postgraduate program — CSE, IT, ECE, ME, CE, MBA, BBA or any other stream — is eligible to participate. Teams can have up to 3 members. All members must be students at the time of the event.',
-  },
-  {
-    q: 'Is there a registration fee?',
-    a: (
-      <>
-        The registration fee is currently{' '}
-        <span className="line-through decoration-[#e83e8c] decoration-2">₹149</span>{' '}
-        <strong className="text-[#34d399]">Free</strong> per team (not per member), which
-        covers the online qualification round. Teams selected for the offline grand finale do
-        not pay any additional participation fee.
-      </>
-    ),
-  },
-  {
-    q: 'What is the team size limit?',
-    a: 'Teams can have a minimum of 1 and a maximum of 3 members. Solo participants are welcome. All members must be registered individually under the same team.',
-  },
-  {
-    q: 'What format does the CTF follow?',
-    a: 'The online qualification is a Jeopardy-style CTF with challenges across Web Exploitation, Cryptography, Forensics, OSINT, Reverse Engineering, Pwn, Steganography, Cloud Security, AI/LLM Security, and Miscellaneous categories. The grand finale is a 12-hour Jeopardy-style round with high-complexity challenges.',
-  },
-  {
-    q: 'What are the event dates?',
-    a: 'The online qualification round is on 17 October (remote, from anywhere in India) and the offline grand finale is on 24 October at the NIET Greater Noida campus. Exact timings and the full schedule will be shared in the announcement channel.',
-  },
-  {
-    q: 'How many teams get selected for the grand finale?',
-    a: 'The top 35 to 50 teams from the online qualification will be invited to the offline grand finale at NIET Greater Noida. The final shortlist and finale briefing will be shared in the announcement channel.',
-  },
-  {
-    q: 'Will accommodation be provided for outstation teams?',
-    a: 'No. Travel and accommodation are not provided — outstation teams qualifying for the finale must arrange their own stay in Greater Noida. The finale venue is NIET Greater Noida; see the Contact page for the campus map.',
-  },
-  {
-    q: 'What is the prize pool?',
-    a: 'The total prize pool is up to ₹51,000, covering cash prizes, trophies, certificates and goodies. The exact split between placement prizes and on-ground rewards will be announced after registrations close.',
-  },
-  {
-    q: 'How do I stay updated about announcements?',
-    a: 'Join the official WhatsApp announcement channel — all updates, rule changes, deadlines and schedule changes will be communicated there. You can also follow the Cyber Invaders social handles for news.',
-  },
-  {
-    q: 'Can I participate if I have never done a CTF before?',
-    a: 'Absolutely. Ghost Protocol CTF is designed to be accessible to beginners while still challenging for experienced players. We recommend exploring beginner CTF platforms like PicoCTF and CTFtime to get familiar with the format.',
-  },
-  {
-    q: 'How do I contact the organizing team?',
-    a: 'Reach us at cyberinvaders@niet.co.in or through our social media channels. For urgent event-related queries, the WhatsApp channel is the fastest way to get a response.',
-  },
-]
+/**
+ * Highlights the former fee and the current one without duplicating the string —
+ * `lib/faq.ts` stays the single source for the accordion, the FAQPage schema and
+ * llms.txt.
+ */
+function renderAnswer(text: string) {
+  return text.split(/(₹149|Free)/g).map((part, i) => {
+    if (part === '₹149') {
+      return (
+        <span key={i} className="line-through decoration-[#e83e8c] decoration-2">
+          {part}
+        </span>
+      )
+    }
+    if (part === 'Free') {
+      return (
+        <strong key={i} className="text-[#34d399]">
+          {part}
+        </strong>
+      )
+    }
+    return <Fragment key={i}>{part}</Fragment>
+  })
+}
 
-function FaqItem({ faq, index }: { faq: { q: string; a: React.ReactNode }; index: number }) {
+function FaqItem({ faq, index }: { faq: { q: string; a: string }; index: number }) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -116,7 +88,7 @@ function FaqItem({ faq, index }: { faq: { q: string; a: React.ReactNode }; index
               className="px-6 pb-5 pt-0 text-sm leading-relaxed"
               style={{ color: '#9ca3af', borderTop: '1px solid rgba(94,23,235,0.12)' }}
             >
-              <p className="pt-4">{faq.a}</p>
+              <p className="pt-4">{renderAnswer(faq.a)}</p>
             </div>
           </motion.div>
         )}
@@ -126,6 +98,8 @@ function FaqItem({ faq, index }: { faq: { q: string; a: React.ReactNode }; index
 }
 
 export function Faq() {
+  const toSection = useSectionHref()
+
   return (
     <section id="faq" className="relative overflow-hidden py-24 md:py-32">
       <div
@@ -155,7 +129,7 @@ export function Faq() {
             <p className="text-sm" style={{ color: '#68738D' }}>
               Still have questions?{' '}
               <a
-                href="#contact"
+                href={toSection('#contact')}
                 className="font-medium underline underline-offset-4 transition-colors hover:text-foreground"
                 style={{ color: '#a78bfa' }}
               >

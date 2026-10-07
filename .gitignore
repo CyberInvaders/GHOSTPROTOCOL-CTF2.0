@@ -21,3 +21,6 @@ node_modules
 # Lockfile IS committed — Vercel needs it for a deterministic install
 # (the old "uses pnpm" ignore left the repo with no lockfile at all,
 #  which is what broke the Vercel deployment)
+
+# Local editor tooling
+.zcodeignore

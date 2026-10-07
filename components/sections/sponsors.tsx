@@ -3,6 +3,7 @@
 import { motion } from 'motion/react'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal, StaggerGroup, staggerItem } from '@/components/motion-primitives'
+import { useSectionHref } from '@/lib/use-section-href'
 
 /* ─── Tier config ─────────────────────────────────────────────────────────── */
 const tiers = [
@@ -92,6 +93,8 @@ function PlaceholderCard({
 
 /* ─── Section ─────────────────────────────────────────────────────────────── */
 export function Sponsors() {
+  const toSection = useSectionHref()
+
   return (
     <section id="sponsors" className="relative overflow-hidden py-24 md:py-32">
       <div
@@ -171,9 +174,9 @@ export function Sponsors() {
             <p className="mt-2 text-sm" style={{ color: '#9ca3af' }}>
               Partner with us to reach 600+ talented cybersecurity students across the nation.
             </p>
-            <a
-              href="#contact"
-              className="mt-5 inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#4a10c4]"
+<a
+              href={toSection('#contact')}
+              className="mt-5 inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm font-semibold text-white transition-colors"
               style={{ background: '#5e17eb' }}
             >
               Get in Touch

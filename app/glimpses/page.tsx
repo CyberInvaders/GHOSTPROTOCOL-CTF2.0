@@ -9,22 +9,28 @@ import { Reveal } from '@/components/motion-primitives'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
 import { siteLinks } from '@/lib/links'
 import { archivePhotos } from '@/lib/archive-photos'
+import { buildPageMetadata } from '@/lib/seo'
+import { BreadcrumbJsonLd } from '@/components/json-ld'
 
-export const metadata: Metadata = {
-  title: 'Glimpses — Ghost Protocol CTF 2.0 | Cyber Invaders',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Glimpses — Photo Archive',
   description:
-    'The full Cyber Invaders photo archive — moments from past workshops, qualifiers and CTF floors, uncropped and in the order they happened.',
-  openGraph: {
-    title: 'Glimpses from the floor — Cyber Invaders',
-    description:
-      'The full Cyber Invaders photo archive — moments from past workshops, qualifiers and CTF floors.',
-    type: 'website',
-  },
-}
+    'The full Cyber Invaders photo archive — moments from past CTF workshops, qualifiers and competition floors at NIET Greater Noida, uncropped and in order.',
+  path: '/glimpses',
+  ogDescription:
+    'Moments from past Cyber Invaders CTF workshops, qualifiers and competition floors at NIET Greater Noida.',
+})
 
 export default function GlimpsesPage() {
   return (
-    <main className="relative overflow-x-hidden">
+    <>
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Glimpses', path: '/glimpses' },
+        ]}
+      />
+      <main className="relative overflow-x-hidden">
       <SiteNav />
 
       <section className="relative pb-8 pt-28 md:pt-36">
@@ -52,6 +58,7 @@ export default function GlimpsesPage() {
 
           <div className="mt-10">
             <SectionHeading
+              as="h1"
               eyebrow="The Archive"
               title="Glimpses from the floor"
               description={`${archivePhotos.length} moments from Cyber Invaders workshops, qualifiers and CTF floors — uncropped, in colour, and in the order they all happened.`}
@@ -163,6 +170,7 @@ export default function GlimpsesPage() {
       </section>
 
       <SiteFooter />
-    </main>
+      </main>
+    </>
   )
 }

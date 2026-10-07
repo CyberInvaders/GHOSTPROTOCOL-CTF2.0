@@ -110,8 +110,8 @@ export function FinalCta() {
           </span>
         </div>
 
-        {/* Giant Title */}
-        <h1
+        {/* Giant Title — h2 so the page keeps a single h1 (in the hero) */}
+        <h2
           className={`mt-8 font-display font-black uppercase leading-[0.9] tracking-tight transition-all duration-[1200ms] delay-200 ${
             ready
               ? 'opacity-100 translate-y-0'
@@ -127,7 +127,7 @@ export function FinalCta() {
           THE SYSTEM
           <br />
           <span style={{ color: '#38bdf8' }}>IS WAITING.</span>
-        </h1>
+        </h2>
 
         {/* Secondary Line */}
         <p

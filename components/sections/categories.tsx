@@ -1,33 +1,13 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'motion/react'
-import {
-  Globe2,
-  Fingerprint,
-  KeyRound,
-  Search,
-  Binary,
-  Terminal,
-  EyeOff,
-  Cloud,
-  Bot,
-  Puzzle,
-} from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { SectionHeading } from '@/components/section-heading'
 import { StaggerGroup, staggerItem } from '@/components/motion-primitives'
-
-const categories = [
-  { icon: Globe2, name: 'Web Exploitation', back: 'SQLi, XSS, SSRF, auth bypass & server-side payloads.' },
-  { icon: Fingerprint, name: 'Digital Forensics', back: 'Disk, memory, disk image & timeline triage.' },
-  { icon: KeyRound, name: 'Cryptography', back: 'Classical, symmetric, asymmetric & PGP challenges.' },
-  { icon: Search, name: 'OSINT', back: 'Open-source intel gathering from public sources.' },
-  { icon: Binary, name: 'Reverse Engineering', back: 'Static/dynamic analysis & binary deobfuscation.' },
-  { icon: Terminal, name: 'Pwn', back: 'Buffer overflows, ROP & modern exploit development.' },
-  { icon: EyeOff, name: 'Steganography', back: 'Hidden data extraction from files & media.' },
-  { icon: Cloud, name: 'Cloud Security', back: 'Misconfigurations, IAM abuse & cloud attack paths.' },
-  { icon: Bot, name: 'AI / LLM Security', back: 'Prompt injection, model abuse & ML-system attacks.' },
-  { icon: Puzzle, name: 'Miscellaneous', back: 'Oddball, puzzle & cross-discipline challenges.' },
-]
+import { categories } from '@/lib/categories'
+import { categoryIcons } from '@/lib/category-icons'
+import { categoryHref } from '@/lib/categories'
 
 export function Categories() {
   return (
@@ -40,14 +20,21 @@ export function Categories() {
         />
 
         <StaggerGroup className="mt-12 sm:mt-14 grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {categories.map((c, idx) => (
+          {categories.map((c, idx) => {
+            const Icon = categoryIcons[c.icon]
+            return (
             <motion.div
               key={c.name}
               variants={staggerItem}
               className="flip-scene group relative min-h-[140px] sm:min-h-[150px]"
               style={{ animationDelay: `${idx * -1.5}s` }}
             >
-              <div className="flip-inner">
+              <Link
+                href={categoryHref(c.slug)}
+                className="block h-full"
+                aria-label={`${c.name} challenge category`}
+              >
+                <div className="flip-inner h-full">
                 {/* ── Front face ── */}
                 <div
                   className="flip-face flip-face-front flex flex-col items-center justify-center gap-2.5 sm:gap-3 overflow-hidden rounded-xl glass p-4 sm:p-6 text-center"
@@ -65,7 +52,7 @@ export function Categories() {
                       background: '#111A2E',
                     }}
                   >
-                    <c.icon className="size-4.5 sm:size-5" style={{ color: '#a78bfa' }} strokeWidth={1.7} />
+                    <Icon className="size-4.5 sm:size-5" style={{ color: '#a78bfa' }} strokeWidth={1.7} />
                   </span>
                   <span
                     className="relative text-xs sm:text-sm font-semibold sm:font-medium leading-snug"
@@ -78,7 +65,7 @@ export function Categories() {
                     style={{ color: '#a78bfa' }}
                     aria-hidden="true"
                   >
-                    tap / hover
+                    {c.slug ? 'explore' : 'catch-all'}
                   </span>
                 </div>
 
@@ -90,13 +77,15 @@ export function Categories() {
                     border: '1px solid rgba(167, 139, 250, 0.4)',
                   }}
                 >
-                  <c.icon className="size-5 sm:size-6 text-white" strokeWidth={1.7} />
+                  <Icon className="size-5 sm:size-6 text-white" strokeWidth={1.7} />
                   <span className="font-display text-xs sm:text-sm font-bold text-white leading-tight">{c.name}</span>
-                  <p className="text-[10px] sm:text-[11px] leading-relaxed text-[#E9E4FF]">{c.back}</p>
+                  <p className="text-[10px] sm:text-[11px] leading-relaxed text-[#E9E4FF]">{c.tagline}</p>
                 </div>
-              </div>
+                </div>
+              </Link>
             </motion.div>
-          ))}
+            )
+          })}
         </StaggerGroup>
       </div>
     </section>
