@@ -50,9 +50,10 @@ export const schedule = {
   finaleStart: '2026-10-24T09:00:00+05:30',
   finaleEnd: '2026-10-24T21:00:00+05:30',
   finaleDateLabel: '24 October 2026',
-  /** Registration closes the night before the online qualifier. */
-  registrationDeadline: '2026-10-15T23:59:00+05:30',
-  registrationDeadlineLabel: '15 October 2026, 11:59 PM IST',
+  /** Registration closes before the online qualifier weekend. */
+  registrationDeadline: '2026-10-14T15:15:00+05:30',
+  registrationDeadlineLabel: '14 October 2026, 3:15 PM IST',
+  registrationDeadlineShortLabel: 'Registrations close · 14 Oct',
 } as const
 
 export const eventFacts = {

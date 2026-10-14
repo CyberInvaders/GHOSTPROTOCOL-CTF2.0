@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'motion/react'
-import { ArrowRight, Trophy, Shapes } from 'lucide-react'
+import { ArrowRight, Lock, Trophy, Shapes } from 'lucide-react'
 import { GlitchText } from '@/components/glitch-text'
 import { siteLinks } from '@/lib/links'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
@@ -10,26 +10,75 @@ import { Countdown, getCountdown } from '@/components/countdown'
 
 /** Live phase label — shows whichever event is next. */
 function EventCountdown() {
-  const [label, setLabel] = useState(() => getCountdown(Date.now()).label)
+  const [state, setState] = useState(() => getCountdown(Date.now()))
+  const { label, closed } = state
 
   useEffect(() => {
-    const id = setInterval(() => setLabel(getCountdown(Date.now()).label), 1000)
+    const id = setInterval(() => setState(getCountdown(Date.now())), 1000)
     return () => clearInterval(id)
   }, [])
 
   return (
     <div className="mb-1.5 flex items-center justify-center gap-1.5 sm:mb-2">
-      <span className="relative flex size-1.5">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#e83e8c] opacity-75" />
-        <span className="relative inline-flex size-1.5 rounded-full bg-[#e83e8c]" />
-      </span>
+      {closed ? (
+        // Registrations are shut — no live pulse, just a static locked dot.
+        <span className="size-1.5 rounded-full bg-[#68738D]" />
+      ) : (
+        <span className="relative flex size-1.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#e83e8c] opacity-75" />
+          <span className="relative inline-flex size-1.5 rounded-full bg-[#e83e8c]" />
+        </span>
+      )}
       <span
         className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] sm:text-[11px]"
-        style={{ color: '#9ca3af' }}
+        style={{ color: closed ? '#68738D' : '#9ca3af' }}
       >
         {label}
       </span>
     </div>
+  )
+}
+
+/** Registration CTA — locks itself the moment the deadline passes. */
+function RegisterCta() {
+  const [closed, setClosed] = useState(() => getCountdown(Date.now()).closed)
+
+  useEffect(() => {
+    const id = setInterval(() => setClosed(getCountdown(Date.now()).closed), 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  if (closed) {
+    return (
+      <span
+        aria-disabled="true"
+        className="inline-flex w-full cursor-not-allowed items-center justify-center gap-2.5 rounded-xl px-7 py-4 text-base font-semibold sm:w-auto sm:px-8"
+        style={{
+          background: 'rgba(94, 23, 235, 0.14)',
+          border: '1px solid rgba(94, 23, 235, 0.26)',
+          color: '#68738D',
+        }}
+      >
+        <Lock className="size-[18px]" aria-hidden="true" />
+        Registrations Closed
+      </span>
+    )
+  }
+
+  return (
+    <a
+      href={siteLinks.register}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-7 py-4 sm:w-auto sm:px-8 sm:py-4 text-base font-semibold text-white transition-all hover:bg-[#4a10c4] active:scale-[0.98]"
+      style={{
+        background: '#5e17eb',
+        boxShadow: '0 8px 24px -12px rgba(94, 23, 235, 0.6)',
+      }}
+    >
+      Register Now
+      <ArrowRight className="size-[18px] transition-transform group-hover:translate-x-1" />
+    </a>
   )
 }
 
@@ -153,6 +202,12 @@ export function Hero() {
               Up to ₹51,000
             </div>
             <div className="mt-0.5 text-[10px] sm:text-xs" style={{ color: '#68738D' }}>Prize Pool</div>
+            <div
+              className="mt-2 border-t pt-2 font-mono text-[9px] uppercase tracking-[0.14em] sm:text-[10px]"
+              style={{ color: '#a78bfa', borderColor: 'rgba(94, 23, 235, 0.22)' }}
+            >
+              Certificates · Goodies · Cash Prizes
+            </div>
           </div>
 
           {/* Countdown — auto-switches from registration to qualifier to grand finale */}
@@ -175,19 +230,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.55 }}
           className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3.5 sm:gap-4"
         >
-          <a
-            href={siteLinks.register}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-7 py-4 sm:w-auto sm:px-8 sm:py-4 text-base font-semibold text-white transition-all hover:bg-[#4a10c4] active:scale-[0.98]"
-            style={{
-              background: '#5e17eb',
-              boxShadow: '0 8px 24px -12px rgba(94, 23, 235, 0.6)',
-            }}
-          >
-            Register Now
-            <ArrowRight className="size-[18px] transition-transform group-hover:translate-x-1" />
-          </a>
+          <RegisterCta />
           <a
             href={siteLinks.whatsappChannel}
             target="_blank"

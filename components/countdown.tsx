@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import { schedule } from '@/lib/site'
 
-/** Event phases. Times are IST (+05:30). */
+/** Event phases. Times are IST (+05:30). Dates come from lib/site so the
+ *  countdown can never drift from the JSON-LD, llms.txt or category copy. */
 export const PHASES = [
   {
     id: 'registration',
-    label: 'Registrations close · 15 Oct',
-    at: new Date('2026-10-15T23:59:00+05:30').getTime(),
+    label: schedule.registrationDeadlineShortLabel,
+    at: new Date(schedule.registrationDeadline).getTime(),
   },
   {
     id: 'qualifier',
@@ -27,15 +29,26 @@ export type PhaseId = (typeof PHASES)[number]['id']
 /** Current phase + time remaining until it starts. */
 export function getPhase(now: number) {
   const next = PHASES.find((p) => p.at > now)
-  if (!next) return { phase: PHASES[PHASES.length - 1], diff: 0, live: true }
-  return { phase: next, diff: next.at - now, live: false }
+  if (!next) return { phase: PHASES[PHASES.length - 1], diff: 0, live: true, closed: false }
+  return {
+    phase: next,
+    diff: next.at - now,
+    live: false,
+    // Past the registration deadline — the countdown stops and the notice takes over.
+    closed: now >= PHASES[0].at,
+  }
 }
 
 export function getCountdown(now: number) {
-  const { phase, diff, live } = getPhase(now)
+  const { phase, diff, live, closed } = getPhase(now)
   return {
     live,
-    label: live ? 'Finale is live' : phase.label,
+    closed,
+    label: closed
+      ? '[STATUS: REGISTRATIONS CLOSED]'
+      : live
+        ? 'Finale is live'
+        : phase.label,
     days: Math.floor(diff / 86_400_000),
     hours: Math.floor(diff / 3_600_000) % 24,
     minutes: Math.floor(diff / 60_000) % 60,
@@ -85,6 +98,38 @@ function Separator() {
   )
 }
 
+function RegistrationsClosed() {
+  return (
+    <div className="flex flex-col items-center gap-2.5 text-center sm:gap-3">
+      <span
+        className="rounded-full px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] sm:text-[11px]"
+        style={{
+          background: 'rgba(232, 62, 140, 0.12)',
+          border: '1px solid rgba(232, 62, 140, 0.35)',
+          color: '#f9a8d4',
+        }}
+      >
+        🔒 [STATUS: REGISTRATIONS CLOSED] 🚩
+      </span>
+
+      <p
+        className="max-w-md text-[11px] leading-relaxed sm:text-xs"
+        style={{ color: '#9ca3af' }}
+      >
+        Missed the deadline? No worries! Keep sharpening your skills, and we'll see you in the
+        next arena. Best of luck next time! 💻
+      </p>
+
+      <p
+        className="max-w-md text-[11px] font-semibold leading-relaxed sm:text-xs"
+        style={{ color: '#34d399' }}
+      >
+        To all registered participants: Happy Hacking!
+      </p>
+    </div>
+  )
+}
+
 export function Countdown() {
   const [now, setNow] = useState(() => Date.now())
 
@@ -94,6 +139,10 @@ export function Countdown() {
   }, [])
 
   const t = getCountdown(now)
+
+  if (t.closed) {
+    return <RegistrationsClosed />
+  }
 
   if (t.live) {
     return (
