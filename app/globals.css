@@ -245,6 +245,23 @@
   box-shadow: 0 0 28px -8px rgba(94, 23, 235, 0.45), inset 0 0 18px -8px rgba(94, 23, 235, 0.15);
 }
 
+/* ── System Button (disabled / registrations closed) ── */
+.sys-btn-closed {
+  border-color: rgba(104, 115, 141, 0.32);
+  background: rgba(104, 115, 141, 0.06);
+  color: #68738d;
+  cursor: not-allowed;
+}
+.sys-btn-closed::before {
+  display: none;
+}
+.sys-btn-closed:hover {
+  border-color: rgba(104, 115, 141, 0.32);
+  background: rgba(104, 115, 141, 0.06);
+  box-shadow: none;
+  color: #68738d;
+}
+
 /* ── System Button (WhatsApp green variant) ── */
 .sys-btn-whatsapp {
   border-color: rgba(37, 211, 102, 0.4);

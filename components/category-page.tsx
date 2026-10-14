@@ -7,6 +7,7 @@ import { SiteNav } from '@/components/site-nav'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal, StaggerGroup, staggerItem } from '@/components/motion-primitives'
 import { QuickFacts } from '@/components/quick-facts'
+import { RegisterCta } from '@/components/register-cta'
 import { siteLinks } from '@/lib/links'
 import { categoryIcons } from '@/lib/category-icons'
 import { relatedCategories, type Category } from '@/lib/categories'
@@ -371,18 +372,7 @@ export function CategoryPage({ category }: { category: Category }) {
 
             <Reveal delay={0.1}>
               <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-                <a
-                  href={siteLinks.register}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-[#4a10c4]"
-                  style={{
-                    background: '#5e17eb',
-                    boxShadow: '0 10px 30px -12px rgba(94,23,235,0.8)',
-                  }}
-                >
-                  Register Now <ArrowRight className="size-4" />
-                </a>
+                <RegisterCta />
                 <a
                   href={siteLinks.whatsappChannel}
                   target="_blank"

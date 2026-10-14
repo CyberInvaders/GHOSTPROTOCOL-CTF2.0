@@ -1,4 +1,4 @@
-import { siteConfig, venue, schedule, eventFacts, seoCopy } from '@/lib/site'
+import { siteConfig, venue, schedule, eventFacts, seoCopy, registrationClosed } from '@/lib/site'
 import { siteLinks } from '@/lib/links'
 import { faqs } from '@/lib/faq'
 import { categories } from '@/lib/categories'
@@ -94,7 +94,9 @@ const eventNode = {
     url: siteLinks.register,
     price: eventFacts.feeInr,
     priceCurrency: 'INR',
-    availability: 'https://schema.org/InStock',
+    availability: registrationClosed()
+      ? 'https://schema.org/OutOfStock'
+      : 'https://schema.org/InStock',
     validFrom: '2026-09-01T00:00:00+05:30',
     validThrough: schedule.registrationDeadline,
   },

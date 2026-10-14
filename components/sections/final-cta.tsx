@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Lock } from 'lucide-react'
 import { siteLinks } from '@/lib/links'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
+import { useRegistrationClosed } from '@/components/countdown'
 
 /**
  * Cinematic finale section — the last thing visitors see before footer.
@@ -12,6 +13,7 @@ import { WhatsAppIcon } from '@/components/whatsapp-icon'
 export function FinalCta() {
   const [ready, setReady] = useState(false)
   const ref = useRef<HTMLElement>(null)
+  const closed = useRegistrationClosed()
 
   useEffect(() => {
     const el = ref.current
@@ -159,21 +161,32 @@ export function FinalCta() {
             ready ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
-          <a
-            href={siteLinks.register}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="sys-btn group"
-          >
-            <span className="relative z-10 flex items-center gap-2.5">
-              {'['}
-              <span className="hidden sm:inline">INITIALIZE</span>
-              <span className="sm:hidden">REGISTER</span>
-              REGISTRATION
-              <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-              {']'}
+          {closed ? (
+            <span aria-disabled="true" className="sys-btn sys-btn-closed">
+              <span className="relative z-10 flex items-center gap-2.5">
+                {'['}
+                <Lock className="size-3.5" aria-hidden="true" />
+                REGISTRATIONS CLOSED
+                {']'}
+              </span>
             </span>
-          </a>
+          ) : (
+            <a
+              href={siteLinks.register}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sys-btn group"
+            >
+              <span className="relative z-10 flex items-center gap-2.5">
+                {'['}
+                <span className="hidden sm:inline">INITIALIZE</span>
+                <span className="sm:hidden">REGISTER</span>
+                REGISTRATION
+                <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                {']'}
+              </span>
+            </a>
+          )}
 
           <a
             href={siteLinks.whatsappChannel}

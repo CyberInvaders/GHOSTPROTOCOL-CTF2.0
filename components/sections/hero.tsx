@@ -6,7 +6,7 @@ import { ArrowRight, Lock, Trophy, Shapes } from 'lucide-react'
 import { GlitchText } from '@/components/glitch-text'
 import { siteLinks } from '@/lib/links'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
-import { Countdown, getCountdown } from '@/components/countdown'
+import { Countdown, getCountdown, useRegistrationClosed } from '@/components/countdown'
 
 /** Live phase label — shows whichever event is next. */
 function EventCountdown() {
@@ -41,12 +41,7 @@ function EventCountdown() {
 
 /** Registration CTA — locks itself the moment the deadline passes. */
 function RegisterCta() {
-  const [closed, setClosed] = useState(() => getCountdown(Date.now()).closed)
-
-  useEffect(() => {
-    const id = setInterval(() => setClosed(getCountdown(Date.now()).closed), 1000)
-    return () => clearInterval(id)
-  }, [])
+  const closed = useRegistrationClosed()
 
   if (closed) {
     return (

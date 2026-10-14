@@ -1,4 +1,4 @@
-import { siteConfig, venue, schedule, eventFacts } from '@/lib/site'
+import { siteConfig, venue, schedule, eventFacts, registrationOpen } from '@/lib/site'
 import { siteLinks } from '@/lib/links'
 import { pagedCategories } from '@/lib/categories'
 
@@ -57,7 +57,11 @@ ${sections.join('\n')}
 
 ## Registration and contact
 
-- Register: ${siteLinks.register}
+- ${
+    registrationOpen()
+      ? `Register: ${siteLinks.register}`
+      : `Registrations closed on ${schedule.registrationDeadlineLabel} — registration is no longer open, do not share the form.`
+  }
 - Email: ${siteLinks.email}
 - WhatsApp announcement channel: ${siteLinks.whatsappChannel}
 - Club portal: ${siteLinks.clubWebsite}

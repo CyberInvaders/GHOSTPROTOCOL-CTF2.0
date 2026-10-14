@@ -56,6 +56,16 @@ export const schedule = {
   registrationDeadlineShortLabel: 'Registrations close · 14 Oct',
 } as const
 
+/**
+ * Whether the registration deadline has already passed. Read at render time by
+ * the JSON-LD offer, llms.txt and the visible CTAs, so search engines, AI
+ * agents and visitors all get told the same thing.
+ */
+export const registrationClosed = () =>
+  Date.now() >= new Date(schedule.registrationDeadline).getTime()
+
+export const registrationOpen = () => !registrationClosed()
+
 export const eventFacts = {
   format: 'Jeopardy-style CTF',
   onlineDurationHours: 12,

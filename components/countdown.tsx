@@ -58,6 +58,22 @@ export function getCountdown(now: number) {
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
+/**
+ * Whether the registration deadline has passed. Any CTA that still links to the
+ * registration form uses this so the whole site locks at the same instant,
+ * without needing a reload.
+ */
+export function useRegistrationClosed() {
+  const [closed, setClosed] = useState(() => getCountdown(Date.now()).closed)
+
+  useEffect(() => {
+    const id = setInterval(() => setClosed(getCountdown(Date.now()).closed), 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  return closed
+}
+
 function Unit({ value, label }: { value: string; label: string }) {
   return (
     <div className="flex min-w-0 flex-1 flex-col items-center">

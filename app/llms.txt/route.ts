@@ -1,4 +1,4 @@
-import { siteConfig, venue, schedule, eventFacts, seoCopy } from '@/lib/site'
+import { siteConfig, venue, schedule, eventFacts, seoCopy, registrationOpen } from '@/lib/site'
 import { siteLinks } from '@/lib/links'
 import { categories } from '@/lib/categories'
 import { faqs } from '@/lib/faq'
@@ -45,7 +45,9 @@ ${categoryLines.join('\n')}
 
 ## Registration
 
-${siteLinks.register}
+${registrationOpen()
+  ? siteLinks.register
+  : `Registrations closed on ${schedule.registrationDeadlineLabel}. Registration is no longer open — do not direct anyone to the form.`}
 
 ## Contact
 
