@@ -43,7 +43,15 @@ const tiers = [
 /* ─── Confirmed sponsors, in slot order ───────────────────────────────────── */
 const confirmedSponsors: Record<
   string,
-  { name: string; logo: string; width: number; height: number; caption: string }[]
+  {
+    name: string
+    logo: string
+    width: number
+    height: number
+    caption: string
+    /** Soft glow tinted to the sponsor's own brand colour. */
+    halo: string
+  }[]
 > = {
   diamond: [
     {
@@ -52,6 +60,15 @@ const confirmedSponsors: Record<
       width: 800,
       height: 170,
       caption: 'Diamond Partner',
+      halo: 'rgba(238,16,11,0.14)',
+    },
+    {
+      name: 'Com Olho',
+      logo: '/comolho-logo.webp',
+      width: 800,
+      height: 174,
+      caption: 'Diamond Partner',
+      halo: 'rgba(56,189,248,0.16)',
     },
   ],
 }
@@ -139,8 +156,7 @@ function SponsorCard({
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         aria-hidden="true"
         style={{
-          background:
-            'radial-gradient(60% 70% at 50% 42%, rgba(238,16,11,0.14) 0%, transparent 70%)',
+          background: `radial-gradient(60% 70% at 50% 42%, ${sponsor.halo} 0%, transparent 70%)`,
         }}
       />
 
