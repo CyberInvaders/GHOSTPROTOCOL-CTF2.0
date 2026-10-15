@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'motion/react'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal, StaggerGroup, staggerItem } from '@/components/motion-primitives'
@@ -38,6 +39,22 @@ const tiers = [
     logoSize: 'h-10',
   },
 ] as const
+
+/* ─── Confirmed sponsors, in slot order ───────────────────────────────────── */
+const confirmedSponsors: Record<
+  string,
+  { name: string; logo: string; width: number; height: number; caption: string }[]
+> = {
+  diamond: [
+    {
+      name: 'CompTIA',
+      logo: '/comptia-logo.webp',
+      width: 800,
+      height: 170,
+      caption: 'Diamond Partner',
+    },
+  ],
+}
 
 /* ─── Placeholder card ────────────────────────────────────────────────────── */
 function PlaceholderCard({
@@ -86,6 +103,63 @@ function PlaceholderCard({
         style={{ color: `${tier.accent}66` }}
       >
         {tier.label} · Slot {index + 1}
+      </span>
+    </motion.div>
+  )
+}
+
+/* ─── Sponsor card (logo locked in) ───────────────────────────────────────── */
+function SponsorCard({
+  tier,
+  sponsor,
+}: {
+  tier: (typeof tiers)[number]
+  sponsor: (typeof confirmedSponsors)[string][number]
+}) {
+  return (
+    <motion.div
+      variants={staggerItem}
+      className="group relative flex flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl p-8 text-center transition-all duration-300 hover:-translate-y-1"
+      style={{
+        background: '#0D1425',
+        border: `1px solid ${tier.border}`,
+        boxShadow: `inset 0 0 28px 0 ${tier.glow}`,
+        minHeight: tier.id === 'diamond' ? '160px' : tier.id === 'platinum' ? '136px' : '112px',
+      }}
+    >
+      {/* shimmer top bar */}
+      <div
+        className="absolute inset-x-0 top-0 h-0.5 rounded-t-2xl opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+        style={{ background: tier.accent }}
+        aria-hidden="true"
+      />
+
+      {/* soft halo so the logo sits on the card instead of floating on it */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        aria-hidden="true"
+        style={{
+          background:
+            'radial-gradient(60% 70% at 50% 42%, rgba(238,16,11,0.14) 0%, transparent 70%)',
+        }}
+      />
+
+      <div className="relative flex w-full items-center justify-center">
+        <Image
+          src={sponsor.logo}
+          alt={sponsor.name}
+          width={sponsor.width}
+          height={sponsor.height}
+          className="h-auto w-full max-w-[280px] object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+          priority={false}
+        />
+      </div>
+
+      <span
+        className="relative font-mono text-[10px] font-semibold uppercase tracking-[0.2em]"
+        style={{ color: `${tier.accent}99` }}
+      >
+        {sponsor.caption}
       </span>
     </motion.div>
   )
@@ -153,9 +227,14 @@ export function Sponsors() {
                         : 'grid-cols-2 sm:grid-cols-4'
                   }`}
                 >
-                  {Array.from({ length: tier.slots }).map((_, i) => (
-                    <PlaceholderCard key={i} tier={tier} index={i} />
-                  ))}
+                  {Array.from({ length: tier.slots }).map((_, i) => {
+                    const sponsor = confirmedSponsors[tier.id]?.[i]
+                    return sponsor ? (
+                      <SponsorCard key={i} tier={tier} sponsor={sponsor} />
+                    ) : (
+                      <PlaceholderCard key={i} tier={tier} index={i} />
+                    )
+                  })}
                 </StaggerGroup>
               </div>
             </Reveal>
