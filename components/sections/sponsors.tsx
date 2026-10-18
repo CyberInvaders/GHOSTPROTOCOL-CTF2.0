@@ -25,7 +25,7 @@ const tiers = [
     accent: '#e2e8f0',       // slate-200
     glow: 'rgba(226,232,240,0.12)',
     border: 'rgba(226,232,240,0.28)',
-    slots: 3,
+    slots: 1,
     logoSize: 'h-14',
   },
   {
@@ -51,6 +51,8 @@ const confirmedSponsors: Record<
     caption: string
     /** Soft glow tinted to the sponsor's own brand colour. */
     halo: string
+    /** Logo width cap — keeps lower tiers visually smaller than Diamond. */
+    maxWidth: number
   }[]
 > = {
   diamond: [
@@ -61,6 +63,7 @@ const confirmedSponsors: Record<
       height: 170,
       caption: 'Diamond Partner',
       halo: 'rgba(238,16,11,0.14)',
+      maxWidth: 280,
     },
     {
       name: 'Com Olho',
@@ -69,6 +72,18 @@ const confirmedSponsors: Record<
       height: 174,
       caption: 'Diamond Partner',
       halo: 'rgba(56,189,248,0.16)',
+      maxWidth: 280,
+    },
+  ],
+  platinum: [
+    {
+      name: 'Altered Security',
+      logo: '/as-logo.png',
+      width: 2437,
+      height: 713,
+      caption: 'Platinum Sponsor',
+      halo: 'rgba(31,56,110,0.20)',
+      maxWidth: 200,
     },
   ],
 }
@@ -166,7 +181,8 @@ function SponsorCard({
           alt={sponsor.name}
           width={sponsor.width}
           height={sponsor.height}
-          className="h-auto w-full max-w-[280px] object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+          className="h-auto w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+          style={{ maxWidth: `${sponsor.maxWidth}px` }}
           priority={false}
         />
       </div>
@@ -239,7 +255,9 @@ export function Sponsors() {
                     tier.id === 'diamond'
                       ? 'grid-cols-1 sm:grid-cols-2'
                       : tier.id === 'platinum'
-                        ? 'grid-cols-1 sm:grid-cols-3'
+                        ? tier.slots > 1
+                          ? 'grid-cols-1 sm:grid-cols-3'
+                          : 'grid-cols-1'
                         : 'grid-cols-2 sm:grid-cols-4'
                   }`}
                 >
