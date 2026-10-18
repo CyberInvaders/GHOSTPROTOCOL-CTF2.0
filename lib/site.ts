@@ -76,8 +76,8 @@ export const eventFacts = {
   teamMax: 3,
   feeInr: 0,
   feeLabel: 'Free',
-  prizePoolInr: 51000,
-  prizePoolLabel: 'Up to ₹51,000',
+  prizePoolInr: 250000,
+  prizePoolLabel: '₹2.5 Lakh',
   categoryCount: 10,
   eligibility: 'Any student currently enrolled in an undergraduate or postgraduate programme, in any stream',
   finalistRangeLabel: 'Top 35 to 50 teams',
@@ -97,7 +97,7 @@ export const seoCopy = {
   defaultDescription:
     'Hack. Secure. Evolve. Ghost Protocol CTF 2.0 — a free national cybersecurity competition for students by Cyber Invaders, NIET Greater Noida.',
   ogDescription:
-    'A national-level student cybersecurity competition by Cyber Invaders, NIET Greater Noida. Free 12-hour online qualifier, 12-hour on-ground finale, up to ₹51,000 in prizes.',
+    'A national-level student cybersecurity competition by Cyber Invaders, NIET Greater Noida. Free 12-hour online qualifier, 12-hour on-ground finale, ₹2.5 Lakh in prizes.',
 } as const
 
 /** Every route the sitemap should advertise, with its last-modified date. */

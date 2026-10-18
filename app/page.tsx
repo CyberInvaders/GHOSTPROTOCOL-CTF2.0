@@ -6,6 +6,7 @@ import { Categories } from '@/components/sections/categories'
 import { Club } from '@/components/sections/club'
 import { Institution } from '@/components/sections/institution'
 import { Metrics } from '@/components/sections/metrics'
+import { PrizeDistribution } from '@/components/sections/prize-distribution'
 import { Glimpses } from '@/components/sections/glimpses'
 import { GlimpsesCta } from '@/components/sections/glimpses-cta'
 import { Sponsors } from '@/components/sections/sponsors'
@@ -36,6 +37,7 @@ export default function Page() {
       <Club />
       <Institution />
       <Metrics />
+      <PrizeDistribution />
       <section id="quick-facts" className="relative py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-4">
           <QuickFacts />

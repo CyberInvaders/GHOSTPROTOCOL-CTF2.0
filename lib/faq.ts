@@ -41,7 +41,7 @@ export const faqs: FaqEntry[] = [
   },
   {
     q: 'What is the prize pool?',
-    a: 'The total prize pool is up to ₹51,000, covering cash prizes, trophies, certificates and goodies. The exact split between placement prizes and on-ground rewards is announced after registrations close.',
+    a: 'The total prize pool is ₹2.5 Lakh. The winner takes home a cash prize plus a CompTIA Security+ certification for every winning team member. 1st and 2nd runners-up win cash prizes, Domain Masters win ₹5,000 each, and every participant receives a certificate of appreciation with special gifts.',
   },
   {
     q: 'How do I stay updated about announcements?',
