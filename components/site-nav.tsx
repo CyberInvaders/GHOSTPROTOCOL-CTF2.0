@@ -14,6 +14,7 @@ const links = [
   { label: 'Category',  href: '#categories' },
   { label: 'About',     href: '#club' },
   { label: 'Glimpses',  href: '/glimpses' },
+  { label: 'Results',   href: '/results' },
   { label: 'Sponsors',  href: '#sponsors' },
   { label: 'Team',      href: '#team' },
   { label: "FAQ's",     href: '#faq' },

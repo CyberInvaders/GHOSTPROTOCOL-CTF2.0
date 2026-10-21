@@ -2,6 +2,7 @@ import { siteConfig, venue, schedule, eventFacts, seoCopy, registrationClosed } 
 import { siteLinks } from '@/lib/links'
 import { faqs } from '@/lib/faq'
 import { categories } from '@/lib/categories'
+import { roundOneResults } from '@/lib/results'
 
 const ORGANIZATION_ID = `${siteConfig.url}/#organization`
 const EVENT_ID = `${siteConfig.url}/#event`
@@ -152,6 +153,28 @@ export function BreadcrumbJsonLd({ crumbs }: { crumbs: Crumb[] }) {
       position: i + 1,
       name: crumb.name,
       item: `${siteConfig.url}${crumb.path}`,
+    })),
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+    />
+  )
+}
+
+/** `ItemList` of the teams that cleared Round 1, used on the /results page. */
+export function ResultsListJsonLd() {
+  const graph = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${siteConfig.name} — Round 1 qualifiers`,
+    numberOfItems: roundOneResults.length,
+    itemListElement: roundOneResults.map((entry) => ({
+      '@type': 'ListItem',
+      position: entry.rank,
+      name: entry.team,
     })),
   }
 

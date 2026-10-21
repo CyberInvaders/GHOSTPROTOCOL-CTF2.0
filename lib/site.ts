@@ -107,4 +107,5 @@ export const staticRoutes = [
   { path: '', priority: 1, changeFrequency: 'weekly' as const },
   { path: '/categories', priority: 0.9, changeFrequency: 'monthly' as const },
   { path: '/glimpses', priority: 0.6, changeFrequency: 'monthly' as const },
+  { path: '/results', priority: 0.8, changeFrequency: 'weekly' as const },
 ]

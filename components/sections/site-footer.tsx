@@ -21,6 +21,7 @@ const navColumns = [
       { label: 'Timeline', href: siteLinks.nav.timeline },
       { label: 'Categories', href: siteLinks.nav.categories },
       { label: 'Glimpses', href: '/glimpses' },
+      { label: 'Results', href: '/results' },
       { label: 'Sponsors', href: siteLinks.nav.sponsors },
     ],
   },
