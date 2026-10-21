@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Instrument_Serif } from 'next/font/google'
 import {
   CalendarDays,
   ChevronRight,
@@ -23,6 +24,13 @@ export const metadata: Metadata = buildPageMetadata({
   title: 'Round 1 Results',
   description: `${qualifiedCount} teams cleared Round 1 of ${siteConfig.name} and advance to the Round 2 finale on ${schedule.finaleDateLabel}. See the full qualifier list and the top three winners.`,
   path: '/results',
+})
+
+const accentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: 'italic',
+  display: 'swap',
 })
 
 const finaleDay = new Date(schedule.finaleStart).toLocaleDateString('en-GB', {
@@ -160,10 +168,14 @@ export default function ResultsPage() {
                   >
                     Round 1{' '}
                     <span
+                      className={`${accentSerif.className} inline-block pr-1 tracking-[-0.01em]`}
                       style={{
-                        background: 'linear-gradient(120deg, #5e17eb 0%, #E83E8C 100%)',
+                        background:
+                          'linear-gradient(112deg, #FFF8E7 0%, #F3DCA8 26%, #C99A4A 58%, #F7E8C4 100%)',
                         WebkitBackgroundClip: 'text',
+                        backgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
+                        filter: 'drop-shadow(0 2px 14px rgba(243,220,168,0.18))',
                       }}
                     >
                       Results
