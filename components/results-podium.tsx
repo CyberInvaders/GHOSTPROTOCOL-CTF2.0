@@ -207,92 +207,47 @@ export function ResultsPodium() {
         </div>
 
         <div className="mt-4 grid gap-2.5 border-t pt-4 sm:grid-cols-2 lg:grid-cols-3" style={{ borderColor: 'rgba(148,163,184,0.10)' }}>
-          {selected.players.length > 0 ? (
-            selected.players.map((player) => (
-              <div
-                key={`${player.name}-${player.email ?? ''}`}
-                className="flex items-start gap-3 rounded-xl px-3 py-2.5"
-                style={{
-                  background: 'rgba(255,255,255,0.02)',
-                  border: '1px solid rgba(148,163,184,0.09)',
-                }}
-              >
-                <span
-                  className="grid size-8 shrink-0 place-items-center rounded-full font-mono text-[10px] font-semibold"
-                  style={{
-                    background: 'rgba(94,23,235,0.14)',
-                    border: '1px solid rgba(94,23,235,0.32)',
-                    color: '#a78bfa',
-                  }}
-                >
-                  {initials(player.name)}
-                </span>
-                <div className="min-w-0">
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    <p
-                      className="font-display text-sm font-semibold"
-                      style={{ color: '#E2E8F0' }}
-                    >
-                      {player.name}
-                    </p>
-                    <span
-                      className="rounded px-1.5 py-0.5 font-mono text-[8px] font-semibold uppercase tracking-[0.12em]"
-                      style={
-                        player.role === 'Leader'
-                          ? {
-                              background: 'rgba(232,62,140,0.12)',
-                              border: '1px solid rgba(232,62,140,0.32)',
-                              color: '#E83E8C',
-                            }
-                          : {
-                              background: 'rgba(148,163,184,0.08)',
-                              border: '1px solid rgba(148,163,184,0.14)',
-                              color: '#94A3B8',
-                            }
-                      }
-                    >
-                      {player.role}
-                    </span>
-                  </div>
-                  {player.email ? (
-                    <p
-                      className="mt-1 select-all break-all font-mono text-[10px] leading-relaxed"
-                      style={{ color: '#9ca3af' }}
-                    >
-                      {player.email}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
-            ))
-          ) : (
+          {selected.players.map((player) => (
             <div
-              className="flex items-start gap-3 rounded-xl px-3 py-2.5 sm:col-span-2 lg:col-span-3"
+              key={player.email}
+              className="flex items-start gap-3 rounded-xl px-3 py-2.5"
               style={{
                 background: 'rgba(255,255,255,0.02)',
-                border: '1px dashed rgba(148,163,184,0.14)',
+                border: '1px solid rgba(148,163,184,0.09)',
               }}
             >
               <span
                 className="grid size-8 shrink-0 place-items-center rounded-full font-mono text-[10px] font-semibold"
                 style={{
-                  background: 'rgba(148,163,184,0.08)',
-                  border: '1px solid rgba(148,163,184,0.18)',
-                  color: '#94A3B8',
+                  background: 'rgba(94,23,235,0.14)',
+                  border: '1px solid rgba(94,23,235,0.32)',
+                  color: '#a78bfa',
                 }}
               >
-                ?
+                {player.name ? initials(player.name) : '@'}
               </span>
-              <div>
-                <p className="font-display text-sm font-semibold" style={{ color: '#E2E8F0' }}>
-                  Other member
-                </p>
-                <p className="mt-1 font-mono text-[10px]" style={{ color: '#68738D' }}>
-                  Details not provided
+              <div className="min-w-0">
+                {player.name ? (
+                  <p
+                    className="font-display text-sm font-semibold"
+                    style={{ color: '#E2E8F0' }}
+                  >
+                    {player.name}
+                  </p>
+                ) : null}
+                <p
+                  className={
+                    player.name
+                      ? 'mt-1 select-all break-all font-mono text-[10px] leading-relaxed'
+                      : 'select-all break-all font-mono text-[11px] leading-relaxed'
+                  }
+                  style={{ color: player.name ? '#9ca3af' : '#E2E8F0' }}
+                >
+                  {player.email}
                 </p>
               </div>
             </div>
-          )}
+          ))}
         </div>
       </div>
     </div>
