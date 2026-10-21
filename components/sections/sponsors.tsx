@@ -16,6 +16,8 @@ const tiers = [
     border: 'rgba(56,189,248,0.32)',
     slots: 2,
     logoSize: 'h-20',
+    minHeight: 196,
+    cardClass: '',
   },
   {
     id: 'platinum',
@@ -26,6 +28,21 @@ const tiers = [
     border: 'rgba(226,232,240,0.28)',
     slots: 1,
     logoSize: 'h-14',
+    minHeight: 168,
+    cardClass: 'mx-auto w-full max-w-[560px]',
+  },
+  {
+    id: 'gold',
+    label: 'Gold',
+    tagline: 'Gold Partner',
+    accent: '#fbbf24',       // amber-400
+    glow: 'rgba(251,191,36,0.12)',
+    border: 'rgba(251,191,36,0.28)',
+    slots: 1,
+    logoSize: 'h-12',
+    // Deliberately the smallest tier: narrower + shorter than Platinum.
+    minHeight: 124,
+    cardClass: 'mx-auto w-full max-w-[340px]',
   },
 ] as const
 
@@ -72,7 +89,18 @@ const confirmedSponsors: Record<
       height: 713,
       caption: 'Platinum Sponsor',
       halo: 'rgba(31,56,110,0.20)',
-      maxWidth: 200,
+      maxWidth: 220,
+    },
+  ],
+  gold: [
+    {
+      name: 'ThunderCipher',
+      logo: '/thundercipher-logo.webp',
+      width: 500,
+      height: 500,
+      caption: 'Gold Partner',
+      halo: 'rgba(39,211,223,0.18)',
+      maxWidth: 130,
     },
   ],
 }
@@ -93,7 +121,7 @@ function PlaceholderCard({
         background: '#0D1425',
         border: `1px solid ${tier.border}`,
         boxShadow: `inset 0 0 28px 0 ${tier.glow}`,
-        minHeight: tier.id === 'diamond' ? '196px' : '152px',
+        minHeight: `${tier.minHeight}px`,
       }}
     >
       {/* shimmer top bar */}
@@ -145,7 +173,7 @@ function SponsorCard({
         background: '#0D1425',
         border: `1px solid ${tier.border}`,
         boxShadow: `inset 0 0 28px 0 ${tier.glow}`,
-        minHeight: tier.id === 'diamond' ? '196px' : '152px',
+        minHeight: `${tier.minHeight}px`,
       }}
     >
       {/* shimmer top bar */}
@@ -244,7 +272,7 @@ export function Sponsors() {
                       : tier.slots > 1
                         ? 'grid-cols-1 sm:grid-cols-3'
                         : 'grid-cols-1'
-                  }`}
+                  } ${tier.cardClass}`}
                 >
                   {Array.from({ length: tier.slots }).map((_, i) => {
                     const sponsor = confirmedSponsors[tier.id]?.[i]
