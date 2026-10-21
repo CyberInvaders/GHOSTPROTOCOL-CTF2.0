@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { motion } from 'motion/react'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal, StaggerGroup, staggerItem } from '@/components/motion-primitives'
-import { useSectionHref } from '@/lib/use-section-href'
 
 /* ─── Tier config ─────────────────────────────────────────────────────────── */
 const tiers = [
@@ -27,16 +26,6 @@ const tiers = [
     border: 'rgba(226,232,240,0.28)',
     slots: 1,
     logoSize: 'h-14',
-  },
-  {
-    id: 'gold',
-    label: 'Gold',
-    tagline: 'Gold Sponsor',
-    accent: '#fbbf24',       // amber-400
-    glow: 'rgba(251,191,36,0.15)',
-    border: 'rgba(251,191,36,0.30)',
-    slots: 4,
-    logoSize: 'h-10',
   },
 ] as const
 
@@ -104,7 +93,7 @@ function PlaceholderCard({
         background: '#0D1425',
         border: `1px solid ${tier.border}`,
         boxShadow: `inset 0 0 28px 0 ${tier.glow}`,
-        minHeight: tier.id === 'diamond' ? '160px' : tier.id === 'platinum' ? '136px' : '112px',
+        minHeight: tier.id === 'diamond' ? '196px' : '152px',
       }}
     >
       {/* shimmer top bar */}
@@ -156,7 +145,7 @@ function SponsorCard({
         background: '#0D1425',
         border: `1px solid ${tier.border}`,
         boxShadow: `inset 0 0 28px 0 ${tier.glow}`,
-        minHeight: tier.id === 'diamond' ? '160px' : tier.id === 'platinum' ? '136px' : '112px',
+        minHeight: tier.id === 'diamond' ? '196px' : '152px',
       }}
     >
       {/* shimmer top bar */}
@@ -199,8 +188,6 @@ function SponsorCard({
 
 /* ─── Section ─────────────────────────────────────────────────────────────── */
 export function Sponsors() {
-  const toSection = useSectionHref()
-
   return (
     <section id="sponsors" className="relative overflow-hidden py-24 md:py-32">
       <div
@@ -254,11 +241,9 @@ export function Sponsors() {
                   className={`grid gap-4 ${
                     tier.id === 'diamond'
                       ? 'grid-cols-1 sm:grid-cols-2'
-                      : tier.id === 'platinum'
-                        ? tier.slots > 1
-                          ? 'grid-cols-1 sm:grid-cols-3'
-                          : 'grid-cols-1'
-                        : 'grid-cols-2 sm:grid-cols-4'
+                      : tier.slots > 1
+                        ? 'grid-cols-1 sm:grid-cols-3'
+                        : 'grid-cols-1'
                   }`}
                 >
                   {Array.from({ length: tier.slots }).map((_, i) => {
@@ -274,28 +259,6 @@ export function Sponsors() {
             </Reveal>
           ))}
         </div>
-
-        {/* Become a sponsor CTA */}
-        <Reveal delay={0.1}>
-          <div
-            className="mt-16 rounded-2xl p-8 text-center"
-            style={{ background: '#0D1425', border: '1px solid rgba(94,23,235,0.22)' }}
-          >
-            <p className="font-display text-lg font-semibold" style={{ color: '#F8FAFC' }}>
-              Want to become a sponsor?
-            </p>
-            <p className="mt-2 text-sm" style={{ color: '#9ca3af' }}>
-              Partner with us to reach 600+ talented cybersecurity students across the nation.
-            </p>
-<a
-              href={toSection('#contact')}
-              className="mt-5 inline-flex items-center gap-2 rounded-md px-6 py-2.5 text-sm font-semibold text-white transition-colors"
-              style={{ background: '#5e17eb' }}
-            >
-              Get in Touch
-            </a>
-          </div>
-        </Reveal>
       </div>
     </section>
   )
