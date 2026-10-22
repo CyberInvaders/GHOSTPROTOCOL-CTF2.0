@@ -210,7 +210,7 @@ export function ResultsPodium() {
           {selected.players.map((player) => (
             <div
               key={player.email}
-              className="flex items-start gap-3 rounded-xl px-3 py-2.5"
+              className="flex items-center gap-3 rounded-xl px-3 py-2.5"
               style={{
                 background: 'rgba(255,255,255,0.02)',
                 border: '1px solid rgba(148,163,184,0.09)',
@@ -234,17 +234,14 @@ export function ResultsPodium() {
                   >
                     {player.name}
                   </p>
-                ) : null}
-                <p
-                  className={
-                    player.name
-                      ? 'mt-1 select-all break-all font-mono text-[10px] leading-relaxed'
-                      : 'select-all break-all font-mono text-[11px] leading-relaxed'
-                  }
-                  style={{ color: player.name ? '#9ca3af' : '#E2E8F0' }}
-                >
-                  {player.email}
-                </p>
+                ) : (
+                  <p
+                    className="select-all break-all font-mono text-[11px] leading-relaxed"
+                    style={{ color: '#E2E8F0' }}
+                  >
+                    {player.email}
+                  </p>
+                )}
               </div>
             </div>
           ))}
