@@ -24,9 +24,9 @@ export const roundOneResults: ResultEntry[] = [
     team: 'Avengers',
     points: 2655,
     players: [
-      { email: 'bajajansh68@gmail.com' },
-      { email: 'deepanshi654321@gmail.com' },
-      { email: 'sahildhillon609@gmail.com' },
+      { name: 'Akshay Bajaj', email: 'bajajansh68@gmail.com' },
+      { name: 'Deepanshi Malhotra', email: 'deepanshi654321@gmail.com' },
+      { name: 'sahil dhillon', email: 'sahildhillon609@gmail.com' },
     ],
   },
   {
@@ -103,7 +103,7 @@ export const roundOneResults: ResultEntry[] = [
     points: 2465,
     players: [
       { name: 'Mrigendra Singh Chauhan', email: 'mrigendrakrstar011@gmail.com' },
-      { email: 'raverma1804@gmail.com' },
+      { name: 'Abhay Verma', email: 'raverma1804@gmail.com' },
     ],
   },
   {
@@ -129,9 +129,9 @@ export const roundOneResults: ResultEntry[] = [
     team: 'CipherStorm',
     points: 2575,
     players: [
-      { email: '0251cys038@niet.co.in' },
-      { email: '0251cys004@niet.co.in' },
-      { email: '0251cys008@niet.co.in' },
+      { name: 'Mohd Shayan', email: '0251cys038@niet.co.in' },
+      { name: 'Ridhima Kaushal', email: '0251cys004@niet.co.in' },
+      { name: 'Rimjhim Sirohi', email: '0251cys008@niet.co.in' },
     ],
   },
   {
@@ -168,7 +168,7 @@ export const roundOneResults: ResultEntry[] = [
     points: 2575,
     players: [
       { name: 'NetRunner', email: 'ts7529614@gmail.com' },
-      { email: '0251cse085@niet.co.in' },
+      { name: 'Ritesh kumar Patel', email: '0251cse085@niet.co.in' },
       { name: 'Aaditya Rajbhar', email: '0251ite112@niet.co.in' },
     ],
   },
@@ -194,7 +194,7 @@ export const roundOneResults: ResultEntry[] = [
     players: [
       { name: 'Praveen Kumar Gupta', email: 'praveenkumargupta640@gmail.com' },
       { name: 'Prince Kumar', email: '0251csml307@niet.co.in' },
-      { email: 'singhrudra830013@gmail.com' },
+      { name: 'Rudra Pratap Singh', email: 'singhrudra830013@gmail.com' },
     ],
   },
   {
@@ -245,7 +245,7 @@ export const roundOneResults: ResultEntry[] = [
     rank: 25,
     team: 'NullX',
     points: 1960,
-    players: [{ email: 'jayantpatil745@gmail.com' }],
+    players: [{ name: 'Jayant Patil', email: 'jayantpatil745@gmail.com' }],
   },
   {
     rank: 26,
@@ -253,7 +253,7 @@ export const roundOneResults: ResultEntry[] = [
     points: 2825,
     players: [
       { name: 'Rajasi', email: 'rajasithakur05@gmail.com' },
-      { email: '0241cys024@niet.co.in' },
+      { name: 'Raghav Aiyer', email: '0241cys024@niet.co.in' },
       { name: 'Prateek Gupta', email: '0241cys045@niet.co.in' },
     ],
   },
@@ -281,8 +281,8 @@ export const roundOneResults: ResultEntry[] = [
     team: 'Weirdos',
     points: 2825,
     players: [
-      { email: 'adivalke@gmail.com' },
-      { email: 'nikhilkatigar76@gmail.com' },
+      { name: 'Adithya Valke', email: 'adivalke@gmail.com' },
+      { name: 'Nikhil Katigar', email: 'nikhilkatigar76@gmail.com' },
     ],
   },
   {
