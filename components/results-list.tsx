@@ -70,8 +70,8 @@ export function ResultsList() {
               </span>
 
               <span
-                className="relative truncate font-display text-sm font-semibold sm:text-base"
-                style={{ color: winner ? '#F8FAFC' : '#E2E8F0' }}
+                className="relative truncate font-sans text-sm font-medium tracking-[-0.005em] sm:text-[15px]"
+                style={{ color: winner ? '#F8FAFC' : '#D8E0EC' }}
               >
                 {entry.team}
               </span>
@@ -94,7 +94,7 @@ export function ResultsList() {
                     className="inline-flex items-center rounded-full px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.14em]"
                     style={{
                       border: '1px solid rgba(148,163,184,0.14)',
-                      color: '#64748B',
+                      color: '#7C879D',
                     }}
                   >
                     Qualified

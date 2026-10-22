@@ -16,7 +16,7 @@ export function FinaleGuidelines() {
           style={{ color: '#a78bfa' }}
           aria-hidden="true"
         />
-        <p className="text-xs leading-relaxed" style={{ color: '#cbd5e1' }}>
+        <p className="text-xs leading-relaxed" style={{ color: '#C4CEE0' }}>
           These rules apply to every participant on the finale floor. Violations may lead to a
           warning, score deduction, or disqualification.
         </p>
@@ -40,12 +40,12 @@ export function FinaleGuidelines() {
             </span>
             <div className="min-w-0">
               <p
-                className="font-display text-sm font-semibold leading-snug"
+                className="font-sans text-sm font-semibold leading-snug"
                 style={{ color: '#E2E8F0' }}
               >
                 {rule.title}
               </p>
-              <p className="mt-1.5 text-xs leading-relaxed" style={{ color: '#9ca3af' }}>
+              <p className="mt-1.5 text-xs leading-relaxed" style={{ color: '#A7B2C7' }}>
                 {rule.detail}
               </p>
             </div>

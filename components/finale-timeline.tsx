@@ -67,7 +67,7 @@ export function FinaleTimeline() {
                   }}
                 >
                   <p
-                    className="font-display text-sm font-semibold leading-snug"
+                    className="font-sans text-sm font-medium leading-snug"
                     style={{ color: '#E2E8F0' }}
                   >
                     {item.activity}
@@ -75,7 +75,7 @@ export function FinaleTimeline() {
                   {item.note ? (
                     <p
                       className="mt-1 font-mono text-[9px] uppercase tracking-[0.12em]"
-                      style={{ color: '#68738D' }}
+                      style={{ color: '#7C879D' }}
                     >
                       {item.note}
                     </p>

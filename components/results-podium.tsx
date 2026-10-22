@@ -100,7 +100,7 @@ export function ResultsPodium() {
               </span>
 
               <span
-                className="relative my-auto py-4 font-display text-sm font-bold leading-tight text-balance sm:text-xl md:text-2xl"
+                className="relative my-auto py-4 font-display text-sm font-semibold leading-tight tracking-tight text-balance sm:text-xl md:text-2xl"
                 style={{ color: '#F8FAFC' }}
               >
                 {entry.team}
@@ -229,7 +229,7 @@ export function ResultsPodium() {
               <div className="min-w-0">
                 {player.name ? (
                   <p
-                    className="font-display text-sm font-semibold"
+                    className="font-sans text-sm font-medium"
                     style={{ color: '#E2E8F0' }}
                   >
                     {player.name}

@@ -63,8 +63,8 @@ function SectionLabel({
   return (
     <div className="mb-6 flex items-center gap-3">
       <span className="whitespace-nowrap font-mono text-[10px] font-medium uppercase tracking-[0.22em] sm:text-[11px]">
-        <span style={{ color: '#a78bfa' }}>{index} //</span>{' '}
-        <span style={{ color: '#9ca3af' }}>{label}</span>
+        <span style={{ color: '#D9BE86' }}>{index} //</span>{' '}
+        <span style={{ color: '#B8C4DA' }}>{label}</span>
       </span>
       <span
         className="h-px flex-1"
@@ -75,7 +75,7 @@ function SectionLabel({
         aria-hidden="true"
       />
       {meta ? (
-        <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.18em] text-[#68738D] sm:text-[11px]">
+        <span className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.18em] text-[#7C879D] sm:text-[11px]">
           {meta}
         </span>
       ) : null}
@@ -185,8 +185,8 @@ export default function ResultsPage() {
 
                 <Reveal delay={0.15}>
                   <p
-                    className="mt-5 max-w-xl text-base leading-relaxed sm:text-lg"
-                    style={{ color: '#9ca3af' }}
+                    className="mt-5 max-w-[34rem] text-pretty text-base leading-[1.75] sm:text-lg"
+                    style={{ color: '#AEBAD0' }}
                   >
                     {qualifiedCount} teams cleared the first round of {siteConfig.name} and
                     advance to the on-ground Round 2 finale. The top {winnerCount} take the
@@ -236,7 +236,7 @@ export default function ResultsPage() {
                     {reportStats.map((stat) => (
                       <div key={stat.label} className="px-2 first:pl-0 last:pr-0">
                         <p
-                          className="font-display text-xl font-bold tracking-tight sm:text-2xl"
+                          className="font-display text-xl font-bold tabular-nums tracking-tight sm:text-2xl"
                           style={{ color: '#F8FAFC' }}
                         >
                           {stat.value}
@@ -304,7 +304,7 @@ export default function ResultsPage() {
                 className="mt-7 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center font-mono text-[10px] uppercase tracking-[0.16em] sm:text-[11px]"
                 style={{ color: '#68738D' }}
               >
-                <Trophy className="size-3.5" style={{ color: '#a78bfa' }} aria-hidden="true" />
+                <Trophy className="size-3.5" style={{ color: '#D9BE86' }} aria-hidden="true" />
                 Results are final and based on Round 1 performance.
               </p>
             </Reveal>
@@ -337,11 +337,17 @@ export default function ResultsPage() {
                       className="mt-3 font-display text-2xl font-bold tracking-tight sm:text-3xl"
                       style={{ color: '#F8FAFC' }}
                     >
-                      The finale awaits.
+                      The finale{' '}
+                      <span
+                        className={`${accentSerif.className} inline-block pr-1 font-normal`}
+                        style={{ color: '#F1E3C4' }}
+                      >
+                        awaits.
+                      </span>
                     </h2>
                     <p
-                      className="mt-3 text-sm leading-relaxed sm:text-base"
-                      style={{ color: '#9ca3af' }}
+                      className="mt-3 text-sm leading-[1.75] sm:text-base"
+                      style={{ color: '#AEBAD0' }}
                     >
                       Qualifiers move to the on-ground Jeopardy finale — same disciplines,
                       higher stakes, one floor.
@@ -354,7 +360,7 @@ export default function ResultsPage() {
                       <span className="inline-flex items-center gap-1.5">
                         <CalendarDays
                           className="size-3.5"
-                          style={{ color: '#a78bfa' }}
+                          style={{ color: '#D9BE86' }}
                           aria-hidden="true"
                         />
                         {schedule.finaleDateLabel}
@@ -362,7 +368,7 @@ export default function ResultsPage() {
                       <span className="inline-flex items-center gap-1.5">
                         <MapPin
                           className="size-3.5"
-                          style={{ color: '#a78bfa' }}
+                          style={{ color: '#D9BE86' }}
                           aria-hidden="true"
                         />
                         {venue.name}
@@ -381,7 +387,7 @@ export default function ResultsPage() {
                       className="mt-1 font-display text-3xl font-bold tracking-tight sm:text-4xl"
                       style={{ color: '#F8FAFC' }}
                     >
-                      {finaleDay} <span style={{ color: '#a78bfa' }}>2026</span>
+                      {finaleDay} <span style={{ color: '#D9BE86' }}>2026</span>
                     </p>
                   </div>
                 </div>
