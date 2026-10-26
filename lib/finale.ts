@@ -3,6 +3,8 @@
  *
  * Kept separate from the qualifying-round copy so the finale details can be
  * published on the results page without touching the main event timeline.
+ * The 2026 edition has concluded — this is kept as a record of how the finale
+ * floor ran.
  */
 
 export type TimelineTone = 'default' | 'start' | 'break' | 'end'

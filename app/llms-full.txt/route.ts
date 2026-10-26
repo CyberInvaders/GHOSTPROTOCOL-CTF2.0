@@ -1,4 +1,5 @@
 import { siteConfig, venue, schedule, eventFacts, registrationOpen } from '@/lib/site'
+import { finalResults } from '@/lib/results'
 import { siteLinks } from '@/lib/links'
 import { pagedCategories } from '@/lib/categories'
 
@@ -48,6 +49,8 @@ ${siteConfig.organizerFull} runs this national-level student cybersecurity compe
 - On-ground grand finale: ${schedule.finaleDateLabel}, ${schedule.finaleStart} to ${schedule.finaleEnd}, at ${venue.name}, ${venue.fullAddress}.
 - Registration closes: ${schedule.registrationDeadlineLabel}.
 - The ${eventFacts.finalistRangeLabel} from the online round advance to the finale.
+- Turnout: ${eventFacts.registeredTeamsLabel} and ${eventFacts.registeredParticipantsLabel} competed. The 2026 edition concluded on ${schedule.finaleDateLabel}.
+- Finale podium: ${finalResults.map((w) => `${w.rank}. ${w.team}`).join(', ')}.
 - Prize pool: ${eventFacts.prizePoolLabel}. Registration fee: ${eventFacts.feeLabel} per team.
 - Travel and accommodation are not provided for outstation finalists.
 

@@ -1,4 +1,5 @@
 import { siteConfig, venue, schedule, eventFacts, seoCopy, registrationOpen } from '@/lib/site'
+import { finalResults } from '@/lib/results'
 import { siteLinks } from '@/lib/links'
 import { categories } from '@/lib/categories'
 import { faqs } from '@/lib/faq'
@@ -33,7 +34,8 @@ ${siteConfig.tagline} — a national-level student cybersecurity competition run
 - **Registration fee:** ${eventFacts.feeLabel} per team (not per member). Teams that qualify for the finale — the top 35 to 50 on the leaderboard — pay no additional participation fee.
 - **Prize pool:** ${eventFacts.prizePoolLabel} across cash, trophies, certificates and goodies.
 - **Eligibility:** ${eventFacts.eligibility}.
-- **Expected scale:** roughly ${eventFacts.expectedTeamsLabel} and ${eventFacts.expectedStudentsLabel} competing.
+- **Turnout:** ${eventFacts.registeredTeamsLabel} and ${eventFacts.registeredParticipantsLabel} competed in the 2026 edition, which concluded on ${schedule.finaleDateLabel}.
+- **Finale podium:** ${finalResults.map((w) => `${w.rank}. ${w.team}`).join(', ')}.
 - **Registration deadline:** ${schedule.registrationDeadlineLabel}.
 - **Travel and accommodation:** not provided for outstation finalists.
 

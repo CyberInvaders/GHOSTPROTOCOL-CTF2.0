@@ -300,8 +300,19 @@ export const roundOneResults: ResultEntry[] = [
 /** Ranks that receive the winner treatment on the results page. */
 export const winnerCount = 3
 
-/** Total teams that cleared Round 1 and advance to Round 2. */
+/** Total teams that cleared Round 1 and advanced to Round 2. */
 export const qualifiedCount = roundOneResults.length
+
+/**
+ * Finale podium — the final placings of the 12-hour on-ground finale.
+ * Declared by the organizers after the finale concluded, so this is the
+ * authoritative "who actually won" list, distinct from the Round 1 ranking.
+ */
+export const finalResults = [
+  { rank: 1, team: 'RedTrace' },
+  { rank: 2, team: 'NetSafe' },
+  { rank: 3, team: 'Recton X' },
+] as const
 
 export type WinnerAccent = {
   accent: string

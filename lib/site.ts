@@ -66,6 +66,13 @@ export const registrationClosed = () =>
 
 export const registrationOpen = () => !registrationClosed()
 
+/**
+ * Whether the whole event — finale included — has run its course. Used by the
+ * countdown, the structured data and the visible copy so a finished edition
+ * never reads as if it were still upcoming.
+ */
+export const eventConcluded = () => Date.now() >= new Date(schedule.finaleEnd).getTime()
+
 export const eventFacts = {
   format: 'Jeopardy-style CTF',
   onlineDurationHours: 12,
@@ -81,6 +88,11 @@ export const eventFacts = {
   categoryCount: 10,
   eligibility: 'Any student currently enrolled in an undergraduate or postgraduate programme, in any stream',
   finalistRangeLabel: 'Top 35 to 50 teams',
+  /** Actuals from the published registration sheet — the event has concluded. */
+  registeredTeams: 384,
+  registeredParticipants: 910,
+  registeredTeamsLabel: '384 teams',
+  registeredParticipantsLabel: '910 participants',
   expectedTeams: 500,
   expectedStudents: 1500,
   expectedTeamsLabel: '500+ teams',
@@ -101,11 +113,12 @@ export const seoCopy = {
 } as const
 
 /** Every route the sitemap should advertise, with its last-modified date. */
-export const routeLastModified = new Date('2026-10-08T00:00:00Z')
+export const routeLastModified = new Date('2026-10-25T00:00:00Z')
 
 export const staticRoutes = [
   { path: '', priority: 1, changeFrequency: 'weekly' as const },
   { path: '/categories', priority: 0.9, changeFrequency: 'monthly' as const },
   { path: '/glimpses', priority: 0.6, changeFrequency: 'monthly' as const },
+  { path: '/participants', priority: 0.7, changeFrequency: 'weekly' as const },
   { path: '/results', priority: 0.8, changeFrequency: 'weekly' as const },
 ]

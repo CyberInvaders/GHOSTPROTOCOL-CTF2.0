@@ -113,6 +113,9 @@ export default async function OpengraphImage() {
               {eventFacts.onlineDurationHours} hours · Remote
             </div>
             <div style={{ display: 'flex', fontSize: 28, color: '#F8FAFC' }}>
+              Winners · 1 RedTrace · 2 NetSafe · 3 Recton X
+            </div>
+            <div style={{ display: 'flex', fontSize: 28, color: '#F8FAFC' }}>
               Grand Finale · {schedule.finaleDateLabel} ·{' '}
               {eventFacts.finaleDurationHours} hours · NIET Greater Noida
             </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import Link from 'next/link'
 import { schedule } from '@/lib/site'
 
 /** Event phases. Times are IST (+05:30). Dates come from lib/site so the
@@ -26,29 +27,41 @@ export const PHASES = [
 
 export type PhaseId = (typeof PHASES)[number]['id']
 
+/**
+ * Whether every phase — including the finale itself — has finished. Once true
+ * the site switches from "registrations closed" to "event concluded" copy so a
+ * finished event never renders as if it were running right now.
+ */
+export const eventConcluded = () => Date.now() >= new Date(schedule.finaleEnd).getTime()
+
 /** Current phase + time remaining until it starts. */
 export function getPhase(now: number) {
   const next = PHASES.find((p) => p.at > now)
-  if (!next) return { phase: PHASES[PHASES.length - 1], diff: 0, live: true, closed: false }
+  const concluded = now >= new Date(schedule.finaleEnd).getTime()
+  if (!next) return { phase: PHASES[PHASES.length - 1], diff: 0, live: !concluded, closed: false, concluded }
   return {
     phase: next,
     diff: next.at - now,
     live: false,
+    concluded,
     // Past the registration deadline — the countdown stops and the notice takes over.
     closed: now >= PHASES[0].at,
   }
 }
 
 export function getCountdown(now: number) {
-  const { phase, diff, live, closed } = getPhase(now)
+  const { phase, diff, live, closed, concluded } = getPhase(now)
   return {
     live,
     closed,
-    label: closed
-      ? '[STATUS: REGISTRATIONS CLOSED]'
-      : live
-        ? 'Finale is live'
-        : phase.label,
+    concluded,
+    label: concluded
+      ? '[STATUS: EVENT CONCLUDED]'
+      : closed
+        ? '[STATUS: REGISTRATIONS CLOSED]'
+        : live
+          ? 'Finale is live'
+          : phase.label,
     days: Math.floor(diff / 86_400_000),
     hours: Math.floor(diff / 3_600_000) % 24,
     minutes: Math.floor(diff / 60_000) % 60,
@@ -132,7 +145,7 @@ function RegistrationsClosed() {
         className="max-w-md text-[11px] leading-relaxed sm:text-xs"
         style={{ color: '#9ca3af' }}
       >
-        Missed the deadline? No worries! Keep sharpening your skills, and we'll see you in the
+        Missed the deadline? No worries! Keep sharpening your skills, and we&apos;ll see you in the
         next arena. Best of luck next time! 💻
       </p>
 
@@ -146,6 +159,49 @@ function RegistrationsClosed() {
   )
 }
 
+/** Shown once the finale window has passed — the event is over, results are in. */
+function EventConcluded() {
+  return (
+    <div className="flex flex-col items-center gap-2.5 text-center sm:gap-3">
+      <span
+        className="rounded-full px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] sm:text-[11px]"
+        style={{
+          background: 'rgba(52, 211, 153, 0.10)',
+          border: '1px solid rgba(52, 211, 153, 0.35)',
+          color: '#6ee7b7',
+        }}
+      >
+        🏁 [STATUS: EVENT CONCLUDED]
+      </span>
+
+      <p
+        className="max-w-md text-[11px] leading-relaxed sm:text-xs"
+        style={{ color: '#9ca3af' }}
+      >
+        Ghost Protocol CTF 2.0 has wrapped up. Thank you to every team that hacked with us — check
+        the results and the full participants roster below.
+      </p>
+
+      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5">
+        <Link
+          href="/results"
+          className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] transition-colors"
+          style={{ color: '#a78bfa' }}
+        >
+          View results →
+        </Link>
+        <Link
+          href="/participants"
+          className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] transition-colors"
+          style={{ color: '#a78bfa' }}
+        >
+          Participants roster →
+        </Link>
+      </div>
+    </div>
+  )
+}
+
 export function Countdown() {
   const [now, setNow] = useState(() => Date.now())
 
@@ -155,6 +211,10 @@ export function Countdown() {
   }, [])
 
   const t = getCountdown(now)
+
+  if (t.concluded) {
+    return <EventConcluded />
+  }
 
   if (t.closed) {
     return <RegistrationsClosed />

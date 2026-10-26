@@ -18,12 +18,15 @@ import { Reveal } from '@/components/motion-primitives'
 import { BreadcrumbJsonLd, ResultsListJsonLd } from '@/components/json-ld'
 import { buildPageMetadata } from '@/lib/seo'
 import { siteConfig, schedule, venue } from '@/lib/site'
+import { ResultsRoundSwitch } from '@/components/results-round-switch'
 import { qualifiedCount, winnerCount } from '@/lib/results'
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Round 1 Results',
-  description: `${qualifiedCount} teams cleared Round 1 of ${siteConfig.name} and advance to the Round 2 finale on ${schedule.finaleDateLabel}. See the full qualifier list and the top three winners.`,
+  description: `Ghost Protocol CTF 2.0 results — RedTrace, NetSafe and Recton X took the finale podium. ${qualifiedCount} teams cleared the Round 1 qualifier.`,
   path: '/results',
+  ogDescription:
+    'Final standings for Ghost Protocol CTF 2.0. A free 12-hour online qualifier fed a 12-hour on-ground finale at NIET Greater Noida with ₹2.5 Lakh in prizes.',
 })
 
 const accentSerif = Instrument_Serif({
@@ -157,7 +160,7 @@ export default function ResultsPage() {
                       className="size-1.5 rounded-full animate-glow-pulse"
                       style={{ background: '#E83E8C' }}
                     />
-                    Round 1 complete
+                    Event concluded · final results
                   </span>
                 </Reveal>
 
@@ -188,9 +191,9 @@ export default function ResultsPage() {
                     className="mt-5 max-w-[34rem] text-pretty text-base leading-[1.75] sm:text-lg"
                     style={{ color: '#AEBAD0' }}
                   >
-                    {qualifiedCount} teams cleared the first round of {siteConfig.name} and
-                    advance to the on-ground Round 2 finale. The top {winnerCount} take the
-                    podium — the rest now prepare for the floor.
+                    {qualifiedCount} teams cleared the first round of {siteConfig.name} and played
+                    the on-ground finale at {venue.name}. Switch between the finale podium and the
+                    Round 1 standings below.
                   </p>
                 </Reveal>
               </div>
@@ -225,7 +228,7 @@ export default function ResultsPage() {
                       className="font-mono text-[10px] uppercase tracking-[0.18em]"
                       style={{ color: '#E83E8C' }}
                     >
-                      R1 / Final
+                      Final / R1
                     </span>
                   </div>
 
@@ -270,46 +273,38 @@ export default function ResultsPage() {
           </div>
         </section>
 
-        {/* ── Winners podium ───────────────────────────────────────────── */}
+        {/* ── Round switch: finale (default) / qualifier ───────────────── */}
         <section className="relative py-8 md:py-10">
           <div className="mx-auto max-w-5xl px-4">
             <Reveal>
               <SectionLabel
                 index="01"
-                label="Round 1 winners"
-                meta={`Top ${winnerCount} teams`}
+                label="Round results"
+                meta={`Finale · ${schedule.finaleDateLabel}`}
               />
             </Reveal>
-            <Reveal delay={0.05}>
-              <ResultsPodium />
-            </Reveal>
+            <div className="mt-7">
+              <ResultsRoundSwitch
+                roundOne={
+                  <div>
+                    <ResultsPodium />
+                    <div className="mt-12">
+                      <div className="mb-5">
+                        <SectionLabel
+                          index="02"
+                          label="Qualifiers"
+                          meta={`${qualifiedCount} teams`}
+                        />
+                      </div>
+                      <ResultsList />
+                    </div>
+                  </div>
+                }
+              />
+            </div>
           </div>
         </section>
 
-        {/* ── Qualifier leaderboard ────────────────────────────────────── */}
-        <section className="relative py-10 md:py-14">
-          <div className="mx-auto max-w-5xl px-4">
-            <Reveal>
-              <SectionLabel
-                index="02"
-                label="Qualifiers"
-                meta={`${qualifiedCount} teams`}
-              />
-            </Reveal>
-            <Reveal delay={0.05}>
-              <ResultsList />
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p
-                className="mt-7 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center font-mono text-[10px] uppercase tracking-[0.16em] sm:text-[11px]"
-                style={{ color: '#68738D' }}
-              >
-                <Trophy className="size-3.5" style={{ color: '#D9BE86' }} aria-hidden="true" />
-                Results are final and based on Round 1 performance.
-              </p>
-            </Reveal>
-          </div>
-        </section>
 
         {/* ── Round 2 call-out ─────────────────────────────────────────── */}
         <section className="relative pb-10 md:pb-14">

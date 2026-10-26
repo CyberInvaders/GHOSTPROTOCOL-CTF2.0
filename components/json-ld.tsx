@@ -1,4 +1,4 @@
-import { siteConfig, venue, schedule, eventFacts, seoCopy, registrationClosed } from '@/lib/site'
+import { siteConfig, venue, schedule, eventFacts, seoCopy, registrationClosed, eventConcluded } from '@/lib/site'
 import { siteLinks } from '@/lib/links'
 import { faqs } from '@/lib/faq'
 import { categories } from '@/lib/categories'
@@ -101,6 +101,13 @@ const eventNode = {
     validFrom: '2026-09-01T00:00:00+05:30',
     validThrough: schedule.registrationDeadline,
   },
+  /** The 2026 edition has finished — say so plainly for crawlers and AI agents. */
+  ...(eventConcluded()
+    ? {
+        description:
+          'Ghost Protocol CTF 2.0 concluded on 24 October 2026 after a 12-hour online qualifier and a 12-hour on-ground finale at NIET Greater Noida. Finale podium: RedTrace (1st), NetSafe (2nd), Recton X (3rd). Registrations are closed.',
+      }
+    : {}),
   performer: { '@id': ORGANIZATION_ID },
   keywords: categories.map((c) => c.name).join(', '),
   about: categories.map((c) => ({ '@type': 'Thing', name: c.name })),

@@ -29,11 +29,15 @@ export const faqs: FaqEntry[] = [
   },
   {
     q: 'What are the event dates?',
-    a: 'The online qualification round is on 17 October 2026 (remote, from anywhere in India) and the offline grand finale is on 24 October 2026 at the NIET Greater Noida campus. Exact timings and the full schedule are shared in the announcement channel.',
+    a: 'The online qualification round was held on 17 October 2026 (remote, from anywhere in India) and the offline grand finale took place on 24 October 2026 at the NIET Greater Noida campus. Both rounds are complete — see the results page for the standings.',
   },
   {
-    q: 'How many teams get selected for the grand finale?',
-    a: 'The top 35 to 50 teams from the online qualification will be invited to the offline grand finale at NIET Greater Noida. The final shortlist and finale briefing are shared in the announcement channel.',
+    q: 'Who won Ghost Protocol CTF 2.0?',
+    a: 'RedTrace took first place in the on-ground finale, NetSafe finished second and Recton X took third. The results page carries the full finale podium along with the Round 1 qualifier standings.',
+  },
+  {
+    q: 'How many teams reached the grand finale?',
+    a: 'Thirty teams cleared the online qualification and played the offline grand finale at NIET Greater Noida, selected from the top of the Round 1 leaderboard.',
   },
   {
     q: 'Will accommodation be provided for outstation teams?',

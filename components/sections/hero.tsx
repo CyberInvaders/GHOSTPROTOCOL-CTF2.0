@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { motion } from 'motion/react'
-import { ArrowRight, Lock, Trophy, Shapes } from 'lucide-react'
+import { ArrowRight, Trophy, Shapes, Users } from 'lucide-react'
 import { GlitchText } from '@/components/glitch-text'
 import { siteLinks } from '@/lib/links'
 import { WhatsAppIcon } from '@/components/whatsapp-icon'
@@ -39,41 +40,21 @@ function EventCountdown() {
   )
 }
 
-/** Registration CTA — locks itself the moment the deadline passes. */
-function RegisterCta() {
-  const closed = useRegistrationClosed()
-
-  if (closed) {
-    return (
-      <span
-        aria-disabled="true"
-        className="inline-flex w-full cursor-not-allowed items-center justify-center gap-2.5 rounded-xl px-7 py-4 text-base font-semibold sm:w-auto sm:px-8"
-        style={{
-          background: 'rgba(94, 23, 235, 0.14)',
-          border: '1px solid rgba(94, 23, 235, 0.26)',
-          color: '#68738D',
-        }}
-      >
-        <Lock className="size-[18px]" aria-hidden="true" />
-        Registrations Closed
-      </span>
-    )
-  }
-
+/** Post-event CTA — once the finale is over the hero points at the results. */
+function ResultsCta() {
   return (
-    <a
-      href={siteLinks.register}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      href="/results"
       className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-7 py-4 sm:w-auto sm:px-8 sm:py-4 text-base font-semibold text-white transition-all hover:bg-[#4a10c4] active:scale-[0.98]"
       style={{
         background: '#5e17eb',
         boxShadow: '0 8px 24px -12px rgba(94, 23, 235, 0.6)',
       }}
     >
-      Register Now
+      <Trophy className="size-[18px]" aria-hidden="true" />
+      View Results
       <ArrowRight className="size-[18px] transition-transform group-hover:translate-x-1" />
-    </a>
+    </Link>
   )
 }
 
@@ -225,22 +206,20 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.55 }}
           className="mt-8 sm:mt-10 flex flex-col items-center justify-center gap-3.5 sm:gap-4"
         >
-          <RegisterCta />
-          <a
-            href={siteLinks.whatsappChannel}
-            target="_blank"
-            rel="noopener noreferrer"
+          <ResultsCta />
+          <Link
+            href="/participants"
             className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl px-7 py-4 sm:w-auto sm:px-8 sm:py-4 text-base font-semibold transition-all active:scale-[0.98]"
             style={{
-              border: '1px solid rgba(37, 211, 102, 0.35)',
-              background: 'rgba(37, 211, 102, 0.08)',
+              border: '1px solid rgba(94, 23, 235, 0.35)',
+              background: 'rgba(94, 23, 235, 0.08)',
               color: '#F8FAFC',
-              boxShadow: '0 8px 24px -14px rgba(37, 211, 102, 0.6)',
             }}
           >
-            <WhatsAppIcon className="size-[18px]" style={{ color: '#25D366' }} />
-            Join Announcement Channel
-          </a>
+            <Users className="size-[18px]" style={{ color: '#a78bfa' }} />
+            Participants Roster
+            <ArrowRight className="size-[18px] transition-transform group-hover:translate-x-1" />
+          </Link>
         </motion.div>
       </div>
     </section>

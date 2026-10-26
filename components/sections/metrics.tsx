@@ -1,30 +1,49 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { Users, UsersRound, Trophy, Globe, MonitorSmartphone, Building, Sparkles } from 'lucide-react'
+import { Users, UsersRound, Trophy, Globe, MonitorSmartphone, Building, Sparkles, UserCheck } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { StaggerGroup, staggerItem } from '@/components/motion-primitives'
 import { CountUp } from '@/components/count-up'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { totalParticipants, totalTeams } from '@/lib/participants'
 
-const metrics = [
+type Metric = {
+  icon: LucideIcon
+  count: number | null
+  prefix?: string
+  suffix?: string
+  static?: string
+  label: string
+  sub: string
+  badge: string
+  back: string
+  /** Optional destination — turns the card into an entry point to another page. */
+  href?: string
+}
+
+const metrics: Metric[] = [
   {
     icon: Users,
-    count: 500,
+    count: totalTeams,
     prefix: '',
-    suffix: '+',
-    label: 'Expected Teams',
-    sub: 'Pan-India student registrations',
-    badge: 'EXPECTED',
-    back: 'Projected Turnout: 500+ collegiate squads (up to 3 members per team) estimated to register from universities across India.',
+    suffix: '',
+    label: 'Teams Registered',
+    sub: `${totalParticipants} hackers took the floor`,
+    badge: 'FINAL',
+    back: `${totalTeams} teams registered for Ghost Protocol CTF 2.0 — ${totalParticipants} student hackers from colleges across India. Open the participants page to find your team.`,
+    href: '/participants',
   },
   {
     icon: UsersRound,
-    count: 1500,
+    count: totalParticipants,
     prefix: '',
-    suffix: '+',
-    label: 'Expected Students',
-    sub: 'Undergrad & postgrad hackers',
-    badge: 'EXPECTED',
-    back: 'Projected Participation: 1,500+ passionate undergraduate & postgraduate ethical hackers competing in the qualification round.',
+    suffix: '',
+    label: 'Students Competed',
+    sub: 'Across the qualifier and finale',
+    badge: 'FINAL',
+    back: `${totalParticipants} undergraduate and postgraduate ethical hackers competed across the 12-hour remote qualifier and the 12-hour on-ground finale.`,
   },
   {
     icon: Trophy,
@@ -70,13 +89,9 @@ export function Metrics() {
     <section className="relative py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-4">
         <StaggerGroup className="grid grid-cols-1 auto-rows-fr gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {metrics.map((m) => (
-            <motion.div
-              key={m.label}
-              variants={staggerItem}
-              className="flip-scene group relative min-h-[250px] sm:min-h-[280px]"
-            >
-              <div className="flip-inner flex flex-col">
+          {metrics.map((m) => {
+            const faces = (
+              <>
                 {/* ── Front face ── */}
                 <div
                   className="flip-face flip-face-front flex flex-1 flex-col justify-between overflow-hidden rounded-xl glass-strong p-5 sm:p-7 md:p-8"
@@ -122,6 +137,16 @@ export function Metrics() {
                   </div>
 
                   <div className="mt-2 text-xs sm:text-sm" style={{ color: '#68738D' }}>{m.sub}</div>
+
+                  {m.href ? (
+                    <span
+                      className="mt-3 inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.16em]"
+                      style={{ color: '#a78bfa' }}
+                    >
+                      View all participants
+                      <ArrowRight className="size-3 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </span>
+                  ) : null}
                 </div>
 
                 {/* ── Back face ── */}
@@ -153,12 +178,32 @@ export function Metrics() {
 
                   <div className="pt-3 mt-3 border-t border-white/15 flex items-center justify-between text-[10px] font-mono text-[#E9E4FF]/60">
                     <span>Ghost Protocol 2.0</span>
-                    <span>Metrics Breakdown</span>
+                    <span>{m.href ? 'Tap to open roster' : 'Metrics Breakdown'}</span>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </>
+            )
+
+            return (
+              <motion.div
+                key={m.label}
+                variants={staggerItem}
+                className="flip-scene group relative min-h-[250px] sm:min-h-[280px]"
+              >
+                {m.href ? (
+                  <Link
+                    href={m.href}
+                    className="flip-inner flex flex-col"
+                    aria-label={`${m.label} — open the participants roster`}
+                  >
+                    {faces}
+                  </Link>
+                ) : (
+                  <div className="flip-inner flex flex-col">{faces}</div>
+                )}
+              </motion.div>
+            )
+          })}
         </StaggerGroup>
       </div>
     </section>
